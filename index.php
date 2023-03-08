@@ -12,7 +12,6 @@
         <div class="login_wrapper">
             <h1>Login</h1>
             <form action="" method="POST">
-                
                 <input type="text" placeholder="Username">
                 <input type="password" placeholder="Password">
                 <button type="submit"> Login</button>

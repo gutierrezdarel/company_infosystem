@@ -1,0 +1,101 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.base_container{
+    /* background-color: aqua; */
+    height: 100vh;
+    width: 100%;
+}
+.header_wrapper{    
+    position: fixed;
+    top: 0;
+    width: calc(100% - 300px);
+    background-color: rgba(0, 0, 0, 0.075);
+    height: 70px;
+    right: 0;
+}
+.sidebar_wrapper{
+    position: fixed;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.918);
+    height: 100vh;
+    width: 300px;
+}
+.sidebar_wrapper h1 {
+    color: white;
+}
+.sidebar_content{
+    color: white;
+    display: flex;
+    justify-content: center;
+    
+}
+.sidebar_content li{
+    padding: 1rem;
+}
+.sidebar_content a{
+    text-decoration: none;
+    color: white;
+}
+.sidebar_content{
+    list-style-type:none;
+}
+.content_wrapper{
+    position: fixed;
+    height: calc(100% - 70px);
+    width: calc(100% - 300px);
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.075);
+}
+.header{
+    background-color: white;
+    padding: 20px;
+    margin: 0 20px;
+}
+.add_company-card{
+    background-color: aqua;
+    padding: 19px 17px;
+    height: 100%;
+}
+.add_company-card p {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.add_button{
+    position: relative;
+    left: 200px;
+    margin-top: 13px;
+}
+.add_button button {
+    padding: 5px 15px;
+}
+.dashboard_container-content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    gap: 50px;
+}
+.add_deparment-card{
+    background-color: aqua;
+    padding: 20px;
+    height: 100%;
+}
+.card_dept{
+    display: flex;
+    flex-direction: column;
+}
+.card_content{
+    width: 100%;
+}
+.overlay_department{
+    display: none;
+}
+.card_position{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
