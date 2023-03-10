@@ -9,72 +9,119 @@ include 'php/act_company.php';
     </div>
     <div class="dashboard_container-content">
 
-        <!-- COMPANY CARD -->
-        <!-- <div class="add_company-card">
-            <p>Add company</p>
-            <div class="card_content">
-                <input type="text" value="Testing" readonly>
-                <button>Edit</button>
-                <button>Delete</button>
+        <div class="card1-container">
+            <div class="company-title">
+                <h1>Company</h1>
             </div>
-            <div class="add_button">
-            <button>Add</button>
-            </div>
-        </div> -->
-        <div class="modal_overlay">
-            <div class="company_modal-container">
-                <form action="php/act_company.php" method="post">
-                    <div class="input">
-                        <input type="text" name="Companyname" required>
-                    </div>
-                    <button type="submit" name="Addcompany">Add</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- DEPARTMENT CARD -->
-        <div class="add_deparment-card">
-            <p>Add Department</p>
-
-            <div class="card_dept">
-
-                <?php
-                select_company();
+            <div class="company-content">
+            <?php 
+               display_company();
                 ?>
             </div>
+            <div class="btn_add-company">
+                <button id="btn_show_company"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+            </div>
         </div>
+        
+        <div class="card2-content">
+            <div class="company-title">
+                <h1>Department</h1>
+            </div>
+                    <?php 
+                    select_dept();
+                    ?>
+            <div class="btn_add-department">
+                <button id="btn_show-department">Add</button>
+            </div>
+        </div>
+<!-- 
+        <div class="card">
+            <div class="company-title">
+                <h1>Position</h1>
+            </div>
+                <?php 
+                // select_position();
+                ?>
+            <div class="btn_add-department">
+                <button id = "btn_show-position">Add</button>
+            </div>
+        </div> -->
 
-        <!-- Modal add department -->
-        <div class="overlay_department" id="add_dept-modal">
-            <div class="card_modal">
-                <form action="php/act_company.php" method="POST">
-                    <input type="text" id="company_id" name="company_id">
-                    <div class="content_department">
-                        <input type="text" placeholder="Department" name="dept_name" required>
-                    </div>
-                    <div class="btn-department">
-                        <button type="submit" name="Add_dept">Add Dept</button>
-                    </div>
+    </div>
+
+
+
+        <!-- ADD MODAL Company -->
+        <div class="overlay_add" id="overlay_add-company">
+            <div class="modal_add">
+                <form action="php/act_company.php" method="post">
+                <div class="modal-header">
+                    <h1>Add Company</h1>
+                </div>
+                <div class="modal_input">
+                    <input type="text" placeholder="Company Name" name="Companyname" required>
+                </div>
+                <div class="modal-btn">
+                    <button name="AddCompany" >ADD</button>
+                </div>
                 </form>
             </div>
         </div>
 
-        <!-- POSITION CARD -->
-        <div class="add_position-card">
-            <p>Add Position</p>
-
-            <div class="card_position">
-                <select name="" id="select_dept">
-                    <option value="">Department</option>
-                <?php 
-                        select_dept();
-                    ?>
-
-                </select>
-                    
+         <!-- ADD MODAL Department -->
+         <div class="overlay_add" id="overlay_add-department">
+            <div class="modal_add">
+                <form action="php/act_company.php" method="post">
+                <div class="modal-header">
+                    <h1>Add Department</h1>
+                </div>
+                <div class="select_department">
+                    <select name="company_id" id="dispalay_company" required>
+                        <option selected disabled value="">Select Company</option>
+                        <?php 
+                        select_company();
+                        ?>
+                    </select>
+                </div>
+                <div class="modal_input">
+                    <input type="text" placeholder="Department Name" name="Departmentname" required>
+                </div>
+                <div class="modal-btn">
+                    <button name="AddDeparment" >ADD</button>
+                </div>
+                </form>
             </div>
         </div>
-    </div>
+
+            <!-- ADD POSITION -->
+        <div class="overlay_add" id="overlay_add-position">
+            <div class="modal_add">
+                <form action="php/act_company.php" method="post">
+                <div class="modal-header">
+                    <h1>Add Position</h1>
+                </div>
+                <div class="select_department">
+                    <select name="department_id" id="dispalay_company" required>
+                        <option selected disabled value="">Select Company</option>
+                        <?php 
+                        display_select_dept();
+                        ?>
+                    </select>
+                </div>
+                <div class="modal_input">
+                    <input type="text" placeholder="Department Name" name="Positionname" required>
+                </div>
+                <div class="modal-btn">
+                    <button name="AddPosition" >ADD</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        
+
+
 </div>
+
 
 <script src="Js/actions.js"></script>

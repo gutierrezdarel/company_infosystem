@@ -55,23 +55,6 @@
     padding: 20px;
     margin: 0 20px;
 }
-.add_company-card{
-    background-color: aqua;
-    padding: 19px 17px;
-    height: 100%;
-}
-.add_company-card p {
-    text-align: center;
-    padding-bottom: 1rem;
-}
-.add_button{
-    position: relative;
-    left: 200px;
-    margin-top: 13px;
-}
-.add_button button {
-    padding: 5px 15px;
-}
 .dashboard_container-content{
     width: 100%;
     display: flex;
@@ -79,23 +62,125 @@
     padding-top: 50px;
     gap: 50px;
 }
-.add_deparment-card{
-    background-color: aqua;
-    padding: 20px;
-    height: 100%;
-}
-.card_dept{
-    display: flex;
-    flex-direction: column;
-}
-.card_content{
+.overlay_add{
+    height: 100vh;
     width: 100%;
-}
-.overlay_department{
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.164);
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
     display: none;
 }
-.card_position{
-    width: 100%;
+.modal_add form{
+    background-color: bisque;
+    /* max-height: 7rem; */
+    padding: 20px 50px;
     display: flex;
+    gap: 10px;
     flex-direction: column;
 }
+.company-content{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.company-content p{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    border-bottom: 2px solid red;
+    padding: 4px;
+}
+
+.append-company {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid red;
+    justify-content: space-around;
+    /* gap: 10px; */
+}
+.append-company button{
+    background-color: transparent;
+    border: none;
+
+}
+.btn-delete{
+    display: none;
+}
+.card1-container{
+    width: 100%;
+    max-width: 15rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.918);
+    padding: 15px 35px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 7px;
+    height: 100%;
+}
+.company-title{
+    text-align: center;
+}
+.btn_add-company button{
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn_add-company{
+    display: flex;
+    justify-content: flex-end;
+}
+.card2-content{
+    width: 100%;
+    max-width: 15rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.918);
+    padding: 15px 35px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 7px;
+}
+.dept{
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  
+}
+.appen-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.appen-content p{
+    width: 100%;
+}
+.append-button{
+    width: 54%;
+}
+.append-button button{
+    background-color: transparent;
+    border: none;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
