@@ -50,4 +50,18 @@ $employee = "CREATE TABLE IF NOT EXISTS employee(id int(6) NOT NULL auto_increme
      FOREIGN KEY (position_id) REFERENCES positions(id)     
     )";
 $db->query($employee);
+
+
+
+$sql = "SELECT * FROM  users";
+$result = mysqli_query($db, $sql); 
+$count = mysqli_num_rows($result);                
+if ($count == 0) {
+  $query = "INSERT INTO users(Username,Pass)
+      VALUES('Admin','admin')";
+      $db->query($query);
+
+}
+
+
 ?>

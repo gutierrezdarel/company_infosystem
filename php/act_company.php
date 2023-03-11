@@ -2,7 +2,6 @@
 // include 'connection.php';
 require 'connection.php';
 
-
 // FORM TRIGGER
 if (isset($_POST['AddCompany'])) {
     insert_company();
@@ -22,6 +21,10 @@ if(isset($_POST['show'])){
 // AJAX APPEND
 if(isset($_POST['append'])){
     display_position();
+}
+// AJAX APPEND
+if(isset($_POST['selected'])){
+    selected_company();
 }
 
 function e($data){
@@ -170,7 +173,6 @@ function select_position(){
                 echo '</div>';
             }
         }
-
 }
 
 // PROCESS OF APPENDING POSITION
@@ -190,5 +192,11 @@ function display_position(){
    
 }
 
+function selected_company(){
+    global $db;
+
+
+    
+}
 
 ?>

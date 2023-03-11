@@ -70,7 +70,22 @@ function append(id){
         $('.append-position-'+id).css('display','none')  
           Appendbtn = false
         }
-        // console.log(response)
       }
     })
 }
+
+$('#select_company').on('change', function(){
+
+   var selectCompany =  $('#select_company').val()
+
+   $.ajx({
+    url:"php/act_company.php",
+    type: "POST",
+    data: "selected="+selectCompany,
+    success:function (response){
+      console.log(response);
+    }
+
+   })
+
+})

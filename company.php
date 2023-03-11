@@ -1,6 +1,11 @@
 <?php
 include 'includes/header.php';
 include 'php/act_company.php';
+
+session_start();
+if (!isset($_SESSION['ID'])) {
+    header("location: index.php");
+}
 ?>
 
 <div class="content_wrapper">
@@ -9,24 +14,18 @@ include 'php/act_company.php';
     </div>
     <div class="dashboard_container-content">
         <div class="Add-buttons">
-            <div class="btn_add-company">
                 <button id="btn_show_company"><span>Company</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg></button>
-            </div>
-            <div class="btn_add-company">
                 <button id="btn_show-department"><span>Department</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg></button>
-            </div>
-            <div class="btn_add-company">
                 <button id="btn_show_company"><span>Position</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg></button>
-            </div>
         </div>
 
         <!-- <div class="card1-container">
