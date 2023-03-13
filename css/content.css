@@ -1,14 +1,15 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.base_container{
+
+.base_container {
     /* background-color: aqua; */
     height: 100vh;
     width: 100%;
 }
-.header_wrapper{    
+
+.header_wrapper {
     position: fixed;
     top: 0;
     width: calc(100% - 300px);
@@ -16,172 +17,122 @@
     height: 70px;
     right: 0;
 }
-.sidebar_wrapper{
+
+.sidebar_wrapper {
     position: fixed;
     left: 0;
     background-color: rgba(0, 0, 0, 0.918);
     height: 100vh;
     width: 300px;
 }
+
 .sidebar_wrapper h1 {
     color: white;
 }
-.sidebar_content{
+
+.sidebar_content {
     color: white;
     display: flex;
     justify-content: center;
-    
+
 }
-.sidebar_content li{
+
+.sidebar_content li {
     padding: 1rem;
 }
-.sidebar_content a{
+
+.sidebar_content a {
     text-decoration: none;
     color: white;
 }
-.sidebar_content{
-    list-style-type:none;
+
+.sidebar_content {
+    list-style-type: none;
 }
-.content_wrapper{
+
+.content_wrapper {
     position: fixed;
     height: calc(100% - 70px);
     width: calc(100% - 300px);
     bottom: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.075);
+    /* padding: 20px 70px; */
+}
+.content_container{
+    padding: 20px 70px;
+}
+.company_table {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    /* background-color: white; */
+}
+
+.company_table table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    /* max-width: 600px; */
+}
+
+.company_table td,
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+.company_table tr:nth-child(even) {
+    background-color: #dddddd;
 }
 .header{
-    background-color: white;
-    padding: 20px;
-    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    /* padding: 0 2rem; */
 }
-.dashboard_container-content{
-    width: 100%;
-  
-    
-}
-.overlay_add{
-    height: 100vh;
+.overlay{
+    background-color: rgba(0, 0, 0, 0.164);
+    height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.164);
     display: flex;
+    align-items: flex-start;
     justify-content: center;
-    padding-top: 10rem;
-    /* display: none; */
-}
-.modal_add form{
-    background-color: bisque;
-    /* max-height: 7rem; */
-    padding: 20px 50px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-}
-.company-content{
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-}
-.company-content p{
-    font-size: 1rem;
-    letter-spacing: 2px;
-    font-weight: 400;
-    border-bottom: 2px solid red;
-    padding: 4px;
-}
-
-.append-company {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 2px solid red;
-    justify-content: space-between;
-    /* gap: 10px; */
-}
-.append-company button{
-    background-color: transparent;
-    border: none;
-
-}
-.btn-delete{
+    padding-top: 8rem;
     display: none;
 }
-.card1-container{
-    width: 100%;
-    max-width: 15rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.918);
-    padding: 15px 35px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    border-radius: 7px;
-    height: 100%;
+.modal_add{
+    background-color: white;
+    padding: 2rem 2rem;
 }
-
-.Add-buttons button{
-    background-color: transparent;
+.modal_input{
+    padding: 10px;
+}
+.btn_table{
     border: none;
-    border-radius: 4px;
-    border: 2px solid red;
+    background-color: transparent;
+    padding: 5px 10px;
+}
+.filter{
+    padding:10px 0;
     display: flex;
     justify-content: flex-end;
+    padding-right: 5rem;
 }
-.Add-buttons span{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 0 7px;
-}
-/* .Add-buttons{
-    display: flex;
-   
-} */
-.card2-content{
-    width: 100%;
-    /* max-width: 15rem; */
-    color: black;
-    /* background-color: rgba(0, 0, 0, 0.918); */
-    padding: 15px 35px;
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    border-radius: 7px;
-}
-.department-content{
-    width: 150px;
-    padding: 0 20px;
-}
-.dept{
-    padding: 10px 15px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;  
-}
-.appen-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.appen-content p{
-    width: 100%;
-}
-.append-button{
-    width: 54%;
-}
-.append-button button{
-    background-color: transparent;
+.filter select{
+    width: 10rem;
     border: none;
+    border-bottom: 2px solid red;
+    background-color: transparent;
+    padding: 10px;
 }
-.Add-buttons{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    /* justify-content: flex-end; */
-    padding-top: 3rem;
-    padding-right: 4rem;
-    justify-content: flex-end;
+.select_department{
+    padding: 10px;
+}
+p{
+    text-align: center;
 }

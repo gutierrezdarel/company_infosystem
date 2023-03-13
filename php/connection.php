@@ -1,6 +1,6 @@
 <?php
 
-$db = new mysqli("localhost", "root", "Allen is Great 200%");
+$db = new mysqli("localhost", "root", "");
 if ($db->connect_errno > 0) {
     die('Unable to connect to database [' . $db->connect_error . ']');
 }
@@ -17,6 +17,7 @@ $db->query($users);
 
 $company = "CREATE TABLE IF NOT EXISTS company(id int(6) NOT NULL auto_increment,
       company_name VARCHAR(50),
+      company_description VARCHAR(100),
       PRIMARY KEY (id)
       )";
 $db->query($company);
@@ -24,6 +25,7 @@ $db->query($company);
 $department = "CREATE TABLE IF NOT EXISTS department(id int(6) NOT NULL auto_increment,
       company_id int(6),
       department_name VARCHAR(50),
+      department_description VARCHAR(100),
       PRIMARY KEY (id),
       FOREIGN KEY (company_id) REFERENCES company(id)
       )";
@@ -32,6 +34,7 @@ $db->query($department);
 $position = "CREATE TABLE IF NOT EXISTS positions(id int(6) NOT NULL auto_increment,
      department_id int(6),
      position_name VARCHAR(50),  
+     position_description VARCHAR(100),
       PRIMARY KEY (id),
       FOREIGN KEY (department_id) REFERENCES department(id)
       )";
@@ -46,6 +49,7 @@ $employee = "CREATE TABLE IF NOT EXISTS employee(id int(6) NOT NULL auto_increme
      birthday DATE,
      img VARCHAR(50),
      age INT(2),
+     stats VARCHAR(50),
      PRIMARY KEY (id),
      FOREIGN KEY (position_id) REFERENCES positions(id)     
     )";
