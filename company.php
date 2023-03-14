@@ -47,6 +47,7 @@ if (!isset($_SESSION['ID'])) {
                     <input type="text" placeholder="Company Description" name="Companydescription" required>
                 </div>
                 <div class="modal-btn">
+                <button type="button" id="btn-close-comp">close</button>
                     <button name="AddCompany">ADD</button>
                 </div>
             </form>

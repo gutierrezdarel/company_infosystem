@@ -28,6 +28,7 @@ function insert_company(){
             }
 }
 
+// Display table Company
 function table_company(){
     global $db;
         $sql_select = "SELECT * FROM company";

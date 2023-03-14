@@ -45,7 +45,7 @@ if (!isset($_SESSION['ID'])) {
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
                 <div class="modal-header">
-                    <h1>Add Department</h1>
+                    <h1>Add Position</h1>
                 </div>
                 <div class="select_department">
                     <select name="department_id" id="dispalay_company" required>
@@ -62,6 +62,7 @@ if (!isset($_SESSION['ID'])) {
                     <input type="text" name="Positiondescription"  placeholder="Position Description" required>
                 </div>
                 <div class="modal-btn">
+                    <button type="button" id="btn-close_pos">close</button>
                     <button name="AddPosition">ADD</button>
                 </div>
             </form>

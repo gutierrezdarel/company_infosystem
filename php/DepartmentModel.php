@@ -1,6 +1,6 @@
 <?php 
 require 'connection.php';
-
+    // FORM BTN
     if(isset($_POST['AddDepartment'])){
         insert_department();
     }
@@ -9,6 +9,7 @@ require 'connection.php';
         append_table();
     }
 
+// Insert  Department 
 function insert_department(){
     global $db;
 
@@ -25,7 +26,7 @@ function insert_department(){
         }
 }
 
-
+// Select Company
 function select_company() {
     global $db;
 
@@ -39,6 +40,8 @@ function select_company() {
             }
         }
 }
+
+// Appen Table Ajax 
 function append_table(){
     global $db;
     

@@ -63,6 +63,7 @@ if (!isset($_SESSION['ID'])) {
                     <input type="text" name="Departmentdescription"  placeholder="Department Description" required>
                 </div>
                 <div class="modal-btn">
+                    <button type="button" id="btn-close-dept">close</button>
                     <button name="AddDepartment">ADD</button>
                 </div>
             </form>
