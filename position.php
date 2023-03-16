@@ -37,7 +37,7 @@ if (!isset($_SESSION['ID'])) {
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>  
     <p class="pos_norec"></p>
 
         <!-- ADD MODAL Position -->

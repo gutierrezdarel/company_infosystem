@@ -34,7 +34,9 @@ if (!isset($_SESSION['ID'])) {
                     </tr>
                 </thead>
                 <tbody>
-            
+                    <?php 
+                    table_employee();
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -50,8 +52,6 @@ if (!isset($_SESSION['ID'])) {
                 </div>
                 <div class="employee_container">
                     <div class="employee_info">
-
-
                         <div class="modal_input">
                             <input type="text" name="fname" placeholder="First Name" required>
                         </div>
@@ -59,10 +59,10 @@ if (!isset($_SESSION['ID'])) {
                             <input type="text" name="lname" placeholder="Last Name" required>
                         </div>
                         <div class="select_department">
-                            <select name="department_id" id="dispalay_company" required>
+                            <select name="gender" id="dispalay_company" required>
                                 <option disabled selected>Select Gender</option>
-                                <option value="">Male</option>
-                                <option value="">Female </option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female </option>
                             </select>
                         </div>
                         <div class="modal_input">
@@ -72,16 +72,16 @@ if (!isset($_SESSION['ID'])) {
                             <input type="number" name="contact" placeholder="Contact" required>
                         </div>
                         <div class="modal_input">
-                            <input type="date" name="fname" placeholder="Birtday" required>
+                            <input type="date" name="birthday" placeholder="Birtday" id="Birthday" required>
                             
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="age" placeholder="Age" required>
+                            <input type="number" name="age" placeholder="Age" id="age" required readonly>
                         </div>
                     </div>
                     <div class="eployee_compinfo">
                         <div class="select_department">
-                            <select name="department_id" id="addemp_company" required>
+                            <select name="display_comp" id="addemp_company" required>
                                 <option disabled selected>Company</option>
                                 <?php 
                                 select_company();
@@ -90,23 +90,29 @@ if (!isset($_SESSION['ID'])) {
                             </select>
                         </div>
                         <div class="select_department">
-                            <select name="department_id" id="display_empdept" required>
+                            <select name="display_dept" id="display_empdept" required>
                                 <option selected>Department</option>
-
                             </select>
                         </div>
                         <div class="select_department">
-                            <select name="department_id" id="display_emppos" required>
+                            <select name="display_position" id="display_emppos" required>
                                 <option disabled selected>Position</option>
                                 <!-- <option value="">Male</option>
                                 <option value="">Female </option> -->
+                            </select>
+                        </div>
+                        <div class="select_department">
+                            <select name="status" id="status" required>
+                                <option disabled selected>Status</option>
+                                <option value="Active">Active</option>
+                                <option value="not Active">Not Active</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-btn">
                     <button type="button" id="btn-close_emp">Close</button>
-                    <button name="AddPosition">ADD</button>
+                    <button name="AddEmployee">ADD</button>
                 </div>
             </form>
         </div>

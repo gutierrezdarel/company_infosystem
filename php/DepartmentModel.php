@@ -41,14 +41,22 @@ function select_company() {
         }
 }
 
-// Appen Table Ajax 
+// Appen Table Ajax Department
 function append_table(){
     global $db;
     
     $append_id = $_POST['append'];
         $department = array();
 
-        $sql_select = "SELECT * FROM department WHERE company_id = '$append_id'";
+       
+        $sql_select = "SELECT c.company_name,
+        d.department_name,
+        d.company_id,
+        d.department_description,
+        d.id
+        FROM company as c
+        RIGHT JOIN department as d
+        ON c.id = d.company_id WHERE d.company_id = '$append_id'";
         $query_select = mysqli_query($db,$sql_select);
 
             if($query_select){

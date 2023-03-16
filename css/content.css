@@ -140,15 +140,6 @@ p{
     display: flex;
     flex-direction: row;
 }
-.center {
-    left: 50%;
-    margin: 0;
-    position: absolute;
-    right: 35%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .form-control {
-    text-align: center;
-  }
+.hide{
+    display: none;
+}

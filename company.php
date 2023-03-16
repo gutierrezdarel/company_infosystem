@@ -53,6 +53,29 @@ if (!isset($_SESSION['ID'])) {
             </form>
         </div>
     </div>
+
+
+        <!-- Update MODAL Company -->
+        <div class="overlay" id="overlay_update-company">
+        <div class="modal_add">
+            <form action="php/CompanyModel.php" method="post">
+                <div class="modal-header">
+                    <h1>Update Company</h1>
+                </div>
+                <input type="hidden" placeholder="Company Name" name="comp_id" id="comp_id" required>
+                <div class="modal_input">
+                    <input type="text" placeholder="Company Name" name="update_compname" id="update_comp-name" required>
+                </div>
+                <div class="modal_input">
+                <textarea rows="3" cols="25" id="update_comp-des" name="update_compdes"></textarea>
+                </div>
+                <div class="modal-btn">
+                <button type="button" id="btn-close-ucomp">close</button>
+                    <button name="UpdateCompany">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="Js/actions.js"></script>

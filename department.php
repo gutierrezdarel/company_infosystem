@@ -69,6 +69,37 @@ if (!isset($_SESSION['ID'])) {
             </form>
         </div>
     </div>
+
+
+     <!-- Update MODAL Department -->
+     <div class="overlay" id="overlay_update-department">
+        <div class="modal_add">
+            <form action="php/DepartmentModel.php" method="post">
+                <div class="modal-header">
+                    <h1>Update Department</h1>
+                </div>
+                <div class="select_department">
+                    <select name="company_id" id="update_comp_id" required >
+                        <!-- <option selected disabled value="">Select Company</option> -->
+                        <?php
+                        select_company();
+                        ?>
+                    </select>
+                </div>
+                <div class="modal_input">
+                    <input type="text" name="Departmentname" placeholder="Department Name" id="Update_deptname" required>
+                </div>
+                <div class="modal_input">
+                    <!-- <input type="text" name="Departmentdescription"  placeholder="Department Description" id="Update_deptdes" required> -->
+                    <textarea rows="3" cols="25" name="update_des"  placeholder="Department Description" id="Update_deptdes" required></textarea>
+                </div>
+                <div class="modal-btn">
+                    <button type="button" id="btn-close-dept">close</button>
+                    <button name="UpdateDepartment">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="Js/actions.js"></script>
