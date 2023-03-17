@@ -5,11 +5,21 @@
   if(isset($_POST['AddPosition'])){
     insert_postion();
   }
+//   FORM BTN 
+  if(isset($_POST['UpadatePosition'])){
+    update_position();
+  }
+
 //   APPEND AJAX
   if(isset($_POST['display'])){
         append_position();
   }
     
+  function e($data){
+    global $db;
+    return mysqli_real_escape_string($db, trim($data));
+}
+
 //   Insert Position
 function insert_postion(){
     global $db;
@@ -72,7 +82,15 @@ function append_position(){
 
     $position = array();
 
-    $sql_select = "SELECT * FROM positions WHERE department_id = '$append_position'";
+    $sql_select = " SELECT d.department_name,
+    p.department_id,
+    p.position_name,
+    p.position_description,
+    p.id 
+    FROM department as d
+    RIGHT JOIN positions as p
+    ON d.id = p.department_id WHERE p.department_id = '$append_position'";
+
     $query_select = mysqli_query($db,$sql_select);
 
         if($query_select){
@@ -82,5 +100,21 @@ function append_position(){
             echo json_encode($position);
         }else{
             echo 'not selected';
+        }
+}
+
+function update_position(){
+    global $db;
+
+    $update_posname =  e($_POST['update_posname']);
+    $update_posdes = e($_POST['update_posdes']);
+    $upos_id = e($_POST['upos_id']);
+    $dept_id = e($_POST['dept_id']);
+
+    $sql_update = "UPDATE positions SET department_id = '$dept_id', position_name = '$update_posname' , position_description = '$update_posdes'
+                            WHERE id = '$upos_id'";
+        $query_update = mysqli_query($db,$sql_update);
+        if($query_update){
+            header("location:../position.php");
         }
 }

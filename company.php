@@ -44,7 +44,7 @@ if (!isset($_SESSION['ID'])) {
                     <input type="text" placeholder="Company Name" name="Companyname" required>
                 </div>
                 <div class="modal_input">
-                    <input type="text" placeholder="Company Description" name="Companydescription" required>
+                    <textarea rows="3" cols="25" placeholder="Company Description" name="Companydescription" required></textarea>
                 </div>
                 <div class="modal-btn">
                 <button type="button" id="btn-close-comp">close</button>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['ID'])) {
                 </div>
                 <div class="modal-btn">
                 <button type="button" id="btn-close-ucomp">close</button>
-                    <button name="UpdateCompany">ADD</button>
+                    <button name="UpdateCompany">Update</button>
                 </div>
             </form>
         </div>

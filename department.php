@@ -78,8 +78,9 @@ if (!isset($_SESSION['ID'])) {
                 <div class="modal-header">
                     <h1>Update Department</h1>
                 </div>
+                <input type="hidden" name="udept_id" placeholder="Department Name" id="udept_id" required>
                 <div class="select_department">
-                    <select name="company_id" id="update_comp_id" required >
+                    <select name="ucompany_id" id="update_comp_id" required >
                         <!-- <option selected disabled value="">Select Company</option> -->
                         <?php
                         select_company();
@@ -87,15 +88,15 @@ if (!isset($_SESSION['ID'])) {
                     </select>
                 </div>
                 <div class="modal_input">
-                    <input type="text" name="Departmentname" placeholder="Department Name" id="Update_deptname" required>
+                    <input type="text" name="update_deptname" placeholder="Department Name" id="Update_deptname" required>
                 </div>
                 <div class="modal_input">
                     <!-- <input type="text" name="Departmentdescription"  placeholder="Department Description" id="Update_deptdes" required> -->
                     <textarea rows="3" cols="25" name="update_des"  placeholder="Department Description" id="Update_deptdes" required></textarea>
                 </div>
                 <div class="modal-btn">
-                    <button type="button" id="btn-close-dept">close</button>
-                    <button name="UpdateDepartment">ADD</button>
+                    <button type="button" id="btn-close-udept">close</button>
+                    <button name="UpdateDepartment">Update</button>
                 </div>
             </form>
         </div>

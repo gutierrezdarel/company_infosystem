@@ -48,7 +48,7 @@ if (!isset($_SESSION['ID'])) {
                     <h1>Add Position</h1>
                 </div>
                 <div class="select_department">
-                    <select name="department_id" id="dispalay_company" required>
+                    <select name="department_id" required>
                         <option selected disabled value="">Select Department</option>
                         <?php
                        select_department();
@@ -64,6 +64,36 @@ if (!isset($_SESSION['ID'])) {
                 <div class="modal-btn">
                     <button type="button" id="btn-close_pos">close</button>
                     <button name="AddPosition">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+       <!-- Update modal Position -->
+       <div class="overlay" id="overlay_update-position">
+        <div class="modal_add">
+            <form action="php/PositionModel.php" method="post">
+                <div class="modal-header">
+                    <h1>Update Position</h1>
+                </div>
+                <input type="hidden" name="upos_id" placeholder="Position Name" id="upos_id" required>
+                <div class="select_department">
+                    <select name="dept_id" id="dept_id" required>
+                        <option selected disabled value="">Select Department</option>
+                        <?php
+                       select_department();
+                        ?>
+                    </select>
+                </div>
+                <div class="modal_input">
+                    <input type="text" name="update_posname" placeholder="Position Name" id="update_posname" required>
+                </div>
+                <div class="modal_input">
+                    <input type="text" name="update_posdes"  placeholder="Position Description" id="update_posdes" required>
+                </div>
+                <div class="modal-btn">
+                    <button type="button" id="btn-close_upos">close</button>
+                    <button name="UpadatePosition">Update</button>
                 </div>
             </form>
         </div>

@@ -1,13 +1,24 @@
 <?php 
     require 'connection.php';
     // AJAX APPEND
-if(isset($_POST['comp'])){
-    emp_selectdept();
+if(isset($_POST['action'])){
+    if($_POST['action']== 'add_action'){
+        emp_selectdept();
+        // echo'hey';
+    }else if($_POST['action']== 'update_action'){
+        emp_selectdept();
+    }
+    
 }
 
 // AJAX APEND
-if(isset($_POST['dept'])){
-    emp_selectpos();
+if(isset($_POST['act'])){
+    // emp_selectpos();
+    if($_POST['act'] == 'add_dept'){
+        emp_selectpos();
+    }else if($_POST['act'] == 'update_dept'){
+        emp_selectpos();
+    }
 }
 
 // ADD EMPLOYEE
@@ -26,9 +37,10 @@ function emp_selectdept(){
     global $db;
 
     $comp_id = $_POST['comp'];
+    $ucomp_id = $_POST['ucomp'];
     $comp= array();
 
-    $sql_select = "SELECT * FROM department WHERE company_id = '$comp_id'";
+    $sql_select = "SELECT * FROM department WHERE company_id = '$comp_id' || company_id = '$ucomp_id'";
     $query_select = mysqli_query($db ,$sql_select);
 
     if($query_select){
@@ -45,9 +57,10 @@ function emp_selectpos(){
     global $db ;
 
     $dept_id = $_POST['dept'];
+    $udept_id = $_POST['udept'];
     $dept = array();
 
-    $sql_select = "SELECT * FROM positions WHERE department_id = '$dept_id'";
+    $sql_select = "SELECT * FROM positions WHERE department_id = '$dept_id' || department_id = '$udept_id'";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){
@@ -90,10 +103,12 @@ function insert_employee(){
 function  table_employee(){
     global $db;
 
-
             $sql_select = "SELECT c.company_name,
                                 d.department_name,
+                                d.company_id,
                                 p.position_name,
+                                p.department_id,
+                                e.id,
                                 e.fname,
                                 e.lname,
                                 e.loc,
@@ -114,22 +129,36 @@ function  table_employee(){
             if($query_select){
                 foreach ($query_select as $row){
                     echo '<tr>';
-                    echo '<td>'.$row['fname'].'</td>';
-                    echo '<td>'.$row['lname'].'</td>';
-                    echo '<td>'.$row['gender'].'</td>';
-                    echo '<td>'.$row['loc'].'</td>';
-                    echo '<td>'.$row['contact'].'</td>';
-                    echo '<td>'.$row['birthday'].'</td>';
-                    echo '<td>'.$row['age'].'</td>';
-                    echo '<td>'.$row['company_name'].'</td>';
-                    echo '<td>'.$row['department_name'].'</td>';
-                    echo '<td>'.$row['position_name'].'</td>';
-                    echo '<td>'.$row['stats'].'</td>';
-                    echo '<td><button class="btn_table"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>
-                    <button class="btn_table"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
+                    echo '<td id="emp_fname-'.$row['id'].'">'.$row['fname'].'</td>';
+                    echo '<td id="emp_lname-'.$row['id'].'">'.$row['lname'].'</td>';
+                    echo '<td id="emp_gender-'.$row['id'].'">'.$row['gender'].'</td>';
+                    echo '<td id="emp_loc-'.$row['id'].'">'.$row['loc'].'</td>';
+                    echo '<td id="emp_contact-'.$row['id'].'">'.$row['contact'].'</td>';
+                    echo '<td id="emp_bday-'.$row['id'].'">'.$row['birthday'].'</td>';
+                    echo '<td id="emp_age-'.$row['id'].'">'.$row['age'].'</td>';
+                    echo '<td id="emp_compname-'.$row['id'].'" comp-id="'.$row['company_id'].'">'.$row['company_name'].'</td>';
+                    echo '<td id="emp_deptname-'.$row['id'].'" >'.$row['department_name'].'</td>';
+                    echo '<td id="emp_posname-'.$row['id'].'">'.$row['position_name'].'</td>';
+                    echo '<td id="emp_stats-'.$row['id'].'">'.$row['stats'].'</td>';
+                    echo '<td><button class="btn_table" onclick = "edit_emp('.$row['id'].')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>
+                    <button class="btn_table" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
                     echo '</tr>';
                 }
             }else{
                 echo 'hello';
             }
+}
+
+function select_company() {
+    global $db;
+
+    $sql_select = "SELECT * FROM company order by id ASC";
+    $query_select = mysqli_query($db, $sql_select);
+
+        if($query_select){
+            foreach($query_select as $row){
+                   echo '<option value = "'.$row['id'].'">'.$row['company_name'].' </option>'; 
+
+            }
+        }
 }

@@ -4,18 +4,29 @@ require 'connection.php';
     if(isset($_POST['AddDepartment'])){
         insert_department();
     }
+    // FORM BTN
+    if(isset($_POST['UpdateDepartment'])){
+        update_department();
+    }
+
     // AJAX APPEND
     if(isset($_POST['append'])){
         append_table();
     }
 
+    
+function e($data){
+    global $db;
+    return mysqli_real_escape_string($db, trim($data));
+}
+
 // Insert  Department 
 function insert_department(){
     global $db;
 
-    $company_id = $_POST['company_id']  ;
-    $department_name = $_POST['Departmentname'];
-    $departmentdescription = $_POST['Departmentdescription'];
+    $company_id = e($_POST['company_id']) ;
+    $department_name = e($_POST['Departmentname']);
+    $departmentdescription = e($_POST['Departmentdescription']);
     
     $sql_insert = "INSERT INTO department (company_id, department_name, department_description) VALUES ('$company_id', '$department_name', '$departmentdescription')";
     $sql_insert = mysqli_query($db , $sql_insert);
@@ -48,7 +59,6 @@ function append_table(){
     $append_id = $_POST['append'];
         $department = array();
 
-       
         $sql_select = "SELECT c.company_name,
         d.department_name,
         d.company_id,
@@ -67,5 +77,22 @@ function append_table(){
             }else{
                 echo 'not selected';
             }
+}
+
+
+function update_department(){
+    global $db;
+
+    $comp_id = e($_POST['ucompany_id']);
+    $update_deptname =  e($_POST['update_deptname']);
+    $update_des = e($_POST['update_des']);
+    $dept_id = e($_POST['udept_id']);
+
+        $sql_update = "UPDATE department SET company_id = '$comp_id', department_name = '$update_deptname'
+                                         , department_description = '$update_des' WHERE id = '$dept_id'";
+           $query_update = mysqli_query($db, $sql_update);
+           if($query_update){
+            header("location:../department.php");
+           }                              
 }
 ?>
