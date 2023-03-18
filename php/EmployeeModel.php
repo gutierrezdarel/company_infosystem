@@ -8,7 +8,6 @@ if(isset($_POST['action'])){
     }else if($_POST['action']== 'update_action'){
         emp_selectdept();
     }
-    
 }
 
 // AJAX APEND
@@ -24,6 +23,11 @@ if(isset($_POST['act'])){
 // ADD EMPLOYEE
 if(isset($_POST['AddEmployee'])){
     insert_employee();
+}
+
+// UPDATE EMPLOYEE
+if(isset($_POST['UpdateEmployee'])){
+    Update_employee();
 }
 
 function e($data){
@@ -71,7 +75,6 @@ function emp_selectpos(){
         }else{
           echo "not selected";
         }
-
 }
 
 function insert_employee(){
@@ -99,7 +102,38 @@ function insert_employee(){
             }
 }
 
+function Update_employee(){
+    global $db;
+    
+    $update_id = e($_POST['update_id']);
+    $update_fname  = e($_POST['update_fname']);
+    $update_lname  = e($_POST['update_lname']);
+    $update_gender  = e($_POST['update_gender']);
+    $update_address  = e($_POST['update_address']);
+    $update_contact  = e($_POST['update_contact']);
+    $update_birthday  = e($_POST['update_birthday']);
+    $update_age  = e($_POST['update_age']);
+    // $udisplay_comp  = e($_POST['udisplay_comp']);
+    // $udisplay_dept  = e($_POST['udisplay_dept']);
+    $update_position  = e($_POST['update_position']);
+    $update_status  = e($_POST['update_status']);
 
+
+    $sql_update = "UPDATE employee SET fname = '$update_fname', lname = '$update_lname', loc = '$update_address', gender = '$update_gender',
+                  contact = '$update_contact', birthday = '$update_birthday', age = '$update_age', position_id = '$update_position', stats = '$update_status'
+                  WHERE id = '$update_id'";
+    $query_update = mysqli_query($db ,$sql_update);
+        if($query_update){
+            // echo 'updated';
+            header("location:../employee.php");
+        }else{
+            echo 'not updated';
+        }
+
+
+   
+
+}
 function  table_employee(){
     global $db;
 
@@ -137,7 +171,7 @@ function  table_employee(){
                     echo '<td id="emp_bday-'.$row['id'].'">'.$row['birthday'].'</td>';
                     echo '<td id="emp_age-'.$row['id'].'">'.$row['age'].'</td>';
                     echo '<td id="emp_compname-'.$row['id'].'" comp-id="'.$row['company_id'].'">'.$row['company_name'].'</td>';
-                    echo '<td id="emp_deptname-'.$row['id'].'" >'.$row['department_name'].'</td>';
+                    echo '<td id="emp_deptname-'.$row['id'].'" dept-id="'.$row['department_id'].'">'.$row['department_name'].'</td>';
                     echo '<td id="emp_posname-'.$row['id'].'">'.$row['position_name'].'</td>';
                     echo '<td id="emp_stats-'.$row['id'].'">'.$row['stats'].'</td>';
                     echo '<td><button class="btn_table" onclick = "edit_emp('.$row['id'].')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>

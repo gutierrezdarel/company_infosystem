@@ -13,7 +13,11 @@ if (!isset($_SESSION['ID'])) {
 
         <div class="header">
             <h1>Position List </h1>
-            <button id="btn_add-position">Add Position</button>
+            <button id="btn_add-position" class="add-comp"><span>ADD</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
         </div>
         <div class="filter">
             <select name="" id="append_position" onchange="getposition()">
@@ -45,9 +49,15 @@ if (!isset($_SESSION['ID'])) {
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
                 <div class="modal-header">
+                <button class="btn-close" type="button" id="btn-close_pos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                     <h1>Add Position</h1>
                 </div>
-                <div class="select_department">
+                <div class="select">
                     <select name="department_id" required>
                         <option selected disabled value="">Select Department</option>
                         <?php
@@ -56,14 +66,16 @@ if (!isset($_SESSION['ID'])) {
                     </select>
                 </div>
                 <div class="modal_input">
-                    <input type="text" name="Positionname" placeholder="Position Name" required>
+                    <input type="text" class="input" name="Positionname" required>
+                    <label for="" class="label">Position Name</label>
                 </div>
                 <div class="modal_input">
-                    <input type="text" name="Positiondescription"  placeholder="Position Description" required>
+                    <textarea type="text" class="input" name="Positiondescription" required></textarea>
+                    <label for="" class="label">Position Description</label>
                 </div>
                 <div class="modal-btn">
-                    <button type="button" id="btn-close_pos">close</button>
-                    <button name="AddPosition">ADD</button>
+                    <!-- <button >close</button> -->
+                    <button class="add-btn" name="AddPosition">ADD</button>
                 </div>
             </form>
         </div>
@@ -74,10 +86,16 @@ if (!isset($_SESSION['ID'])) {
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
                 <div class="modal-header">
-                    <h1>Update Position</h1>
+                <button class="btn-close" type="button" id="btn-close_upos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h1>Edit Position</h1>
                 </div>
                 <input type="hidden" name="upos_id" placeholder="Position Name" id="upos_id" required>
-                <div class="select_department">
+                <div class="select">
                     <select name="dept_id" id="dept_id" required>
                         <option selected disabled value="">Select Department</option>
                         <?php
@@ -86,14 +104,16 @@ if (!isset($_SESSION['ID'])) {
                     </select>
                 </div>
                 <div class="modal_input">
-                    <input type="text" name="update_posname" placeholder="Position Name" id="update_posname" required>
+                    <input type="text" name="update_posname" class="input" id="update_posname" required>
+                    <label for="" class="label">Position Name</label>
                 </div>
                 <div class="modal_input">
-                    <input type="text" name="update_posdes"  placeholder="Position Description" id="update_posdes" required>
+                    <textarea type="text" name="update_posdes" class="input" id="update_posdes" required></textarea>
+                    <label for="" class="label">Position Description</label>
                 </div>
                 <div class="modal-btn">
-                    <button type="button" id="btn-close_upos">close</button>
-                    <button name="UpadatePosition">Update</button>
+                    <!-- <button type="button" >close</button> -->
+                    <button class="add-btn" name="UpadatePosition">Save</button>
                 </div>
             </form>
         </div>

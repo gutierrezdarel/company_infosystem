@@ -12,7 +12,11 @@ if (!isset($_SESSION['ID'])) {
     <div class="content_container">
         <div class="header">
             <h1>Employee List </h1>
-            <button id="btn_add-employee">Add Employee</button>
+            <button id="btn_add-employee" class="add-comp"><span>ADD</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
         </div>
         <div class="company_table">
             <table>
@@ -60,7 +64,7 @@ if (!isset($_SESSION['ID'])) {
                         </div>
                         <div class="select_department">
                             <select name="gender" id="dispalay_company" required>
-                                <option disabled selected>Select Gender</option>
+                                <option disabled selected value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female </option>
                             </select>
@@ -82,26 +86,25 @@ if (!isset($_SESSION['ID'])) {
                     <div class="eployee_compinfo">
                         <div class="select_department">
                             <select name="display_comp" id="addemp_company" onchange="emp_act('add_action')" required>
-                                <option disabled selected>Company</option>
+                                <option disabled selected value="">Company</option>
                                 <?php
                                 select_company();
                                 ?>
-
                             </select>
                         </div>
                         <div class="select_department">
                             <select name="display_dept" class="display_empdept adisplay_empdept" onchange="dept_act('add_dept')" required>
-                                <option selected>Department</option>
+                                <option selected disabled value="">Department</option>
                             </select>
                         </div>
                         <div class="select_department">
                             <select name="display_position" class="display_emppos" required>
-                                <option disabled selected>Position</option>
+                                <option disabled selected value="">Position</option>
                             </select>
                         </div>
                         <div class="select_department">
                             <select name="status" id="status" required>
-                                <option disabled selected>Status</option>
+                                <option disabled selected value="">Status</option>
                                 <option value="Active">Active</option>
                                 <option value="not Active">Not Active</option>
                             </select>
@@ -110,7 +113,7 @@ if (!isset($_SESSION['ID'])) {
                 </div>
                 <div class="modal-btn">
                     <button type="button" id="btn-close_emp">Close</button>
-                    <button name="AddEmployee">ADD</button>
+                    <button type="submit" name="AddEmployee">ADD</button>
                 </div>
             </form>
         </div>
@@ -127,6 +130,7 @@ if (!isset($_SESSION['ID'])) {
                 </div>
                 <div class="employee_container">
                     <div class="employee_info">
+                    <input type="hidden" name="update_id" placeholder="First Name" id="update_id" required>
                         <div class="modal_input">
                             <input type="text" name="update_fname" placeholder="First Name" id="update_fname" required>
                         </div>
@@ -135,7 +139,7 @@ if (!isset($_SESSION['ID'])) {
                         </div>
                         <div class="select_department">
                             <select name="update_gender" id="update_gender" required>
-                                <option disabled selected>Select Gender</option>
+                                <option disabled selected value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female </option>
                             </select>
@@ -156,8 +160,9 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                     <div class="eployee_compinfo">
                         <div class="select_department">
-                            <select name="display_comp" id="uemp_company" onchange="emp_act('update_action')" required>
-                                <option disabled selected>Company</option>
+                        <p id="comp_name" ></p>
+                            <select name="udisplay_comp" id="uemp_company" onchange="emp_act('update_action')" required>
+                                <option disabled selected value="">Company</option>
                                 <?php
                                 select_company();
                                 ?>
@@ -165,20 +170,22 @@ if (!isset($_SESSION['ID'])) {
                             </select>
                         </div>
                         <div class="select_department">
-                            <select name="display_dept" class="display_empdept udisplay_empdept" id="udisplay_empdept" onchange="dept_act('update_dept')" required>
-                                <option selected>Department</option>
+                            <p id="dept_name" ></p>
+                            <select name="udisplay_dept" class="display_empdept udisplay_empdept" id="udisplay_empdept" onchange="dept_act('update_dept')" required>
+                                <option selected disabled value="">Department</option> 
                                 <!-- <option value="SoftWare developer">Department</option> -->
                             </select>
                         </div>
                         <div class="select_department">
-                            <select name="display_position" class="display_emppos" required>
-                                <option disabled selected>Position</option>
+                        <p id="pos_name" ></p>
+                            <select name="update_position" class="display_emppos" required>
+                                <option disabled selected value="">Position</option>
 
                             </select>
                         </div>
                         <div class="select_department">
                             <select name="update_status" id="update_status" required>
-                                <option disabled selected>Status</option>
+                                <option disabled selected value="">Status</option>
                                 <option value="Active">Active</option>
                                 <option value="not Active">Not Active</option>
                             </select>
@@ -187,7 +194,7 @@ if (!isset($_SESSION['ID'])) {
                 </div>
                 <div class="modal-btn">
                     <button type="button" id="btn-close_uemp">Close</button>
-                    <button name="UpdateEmployee">ADD</button>
+                    <button name="UpdateEmployee">Update</button>
                 </div>
             </form>
         </div>

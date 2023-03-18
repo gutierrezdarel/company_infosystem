@@ -125,8 +125,8 @@ function edit_pos(id){
 
 
 function emp_act(action){
-      $('.display_empdept').empty()
-      $('.display_emppos').empty().append('<option disabled selected>Position</option>')
+      $('.display_empdept').empty().append('<option disabled selected value="">Department</option>')
+      $('.display_emppos').empty().append('<option disabled selected value="">Position</option>')
   var data = {
       action:action,
       comp:$('#addemp_company').val(),
@@ -149,7 +149,7 @@ function emp_act(action){
         })    
       }
     })
-    console.log(data)
+    // console.log(data)
 }
 
 // emp_act(action);
@@ -180,7 +180,7 @@ function emp_act(action){
 
 
 function dept_act(act){
-  $('.display_emppos').empty().append('<option disabled selected>Position</option>')
+  $('.display_emppos').empty().append('<option disabled selected value="">Position</option>')
     var data2 = {
       act:act,
       dept:$('.adisplay_empdept').val(),
@@ -248,6 +248,7 @@ function edit_comp(id){
 }
 
 function edit_emp(id){
+    $('#update_id').val(id)
     $('#overlay_update-employee').css('display', 'flex')
     $('#update_fname').val($('#emp_fname-'+id).html())
     $('#update_lname').val($('#emp_lname-'+id).html())
@@ -257,13 +258,14 @@ function edit_emp(id){
     $('#update_status').val($('#emp_stats-'+id).html())
     $('#update_birthday').val($('#emp_bday-'+id).html())
     $('#update_age').val($('#emp_age-'+id).html())
-    $('#uemp_company').val($('#emp_compname-'+id).attr('comp-id'))
-    $('#udisplay_empdept').val($('#emp_deptname-'+id).attr('dept-id'))   
-   
-  //  console.log(test2)
-  // emp_act();
+    $('#comp_name').html($('#emp_compname-'+id).html()) 
+    $('#dept_name').html($('#emp_deptname-'+id).html())
+    $('#pos_name').html($('#emp_posname-'+id).html())
+    
+    
+
 }
-// edit_emp();
+
 
 $('#update_birthday').on('change', function(){
 
@@ -274,3 +276,4 @@ $('#update_birthday').on('change', function(){
   $('#update_age').val(update_age)
 
 })
+
