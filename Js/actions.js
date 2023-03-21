@@ -1,42 +1,48 @@
 
 $('#btn_add-company').click(function(){
-    $('#overlay_add-company').css('display', 'flex');
+    $('#overlay_add-company').css('display', 'flex')
+})
+$('.btn-close-demp').click(function(){
+  $('#overlay_delete-employee').fadeOut();
 })
 $('#btn-close').click(function(){
-  $('#overlay_add-company').css('display', 'none');
+  $('#overlay_add-company').fadeOut();
 })
 $('#btn_add-department').click(function(){
   $('#overlay_add-department').css('display', 'flex');
 })
 $('#btn-close-dept').click(function(){
-  $('#overlay_add-department').css('display', 'none');
+  $('#overlay_add-department').fadeOut();
 })
 $('#btn_add-position').click(function(){
   $('#overlay_add-position').css('display', 'flex');
 })
 $('#btn-close_pos').click(function(){
-  $('#overlay_add-position').css('display', 'none');
+  $('#overlay_add-position').fadeOut();
 })
 $('#btn_add-employee').click(function(){
   $('#overlay_add-employee').css('display', 'flex');
 })
 $('#btn-close_emp').click(function(){
-  $('#overlay_add-employee').css('display', 'none');
+  $('#overlay_add-employee').fadeOut();
 })
 $('#btn-close-ucomp').click(function(){
-  $('#overlay_update-company').css('display', 'none');
+  $('#overlay_update-company').fadeOut();
 })
 $('#btn-close-udept').click(function(){
-  $('#overlay_update-department').css('display', 'none');
+  $('#overlay_update-department').fadeOut();
 })
 $('#btn-close-comp').click(function(){
-  $('#overlay_add-company').css('display', 'none');
+  $('#overlay_add-company').fadeOut();
 })
 $('#btn-close_upos').click(function(){
-  $('#overlay_update-position').css('display', 'none');
+  $('#overlay_update-position').fadeOut();
+})
+$('.btn-close-dpos').click(function(){
+  $('#overlay_delete-position').fadeOut();
 })
 $('#btn-close_uemp').click(function(){
-  $('#overlay_update-employee').css('display', 'none')
+  $('#overlay_update-employee').fadeOut();
 })
 
 function getselected(){
@@ -85,12 +91,14 @@ function getposition(){
   $('.position').empty()
     $('.pos_norec').empty()
   var data = $('#append_position').val()
+
         $.ajax({
         url: "php/PositionModel.php",
         type: "POST",
         data: "display="+data,
         success:function(response){
             var res = JSON.parse(response);
+            
 
             if(res != 0){
               res.forEach(position =>{
@@ -99,18 +107,82 @@ function getposition(){
                     '<td class="hide" id="select_dept-id-'+position.id+'" dept-id ="'+position.department_id+'">'+position.department_name+'</td>'+
                     '<td id="upos_name-'+position.id+'">'+position.position_name+'</td>'+
                     '<td id="upos_des-'+position.id+'">'+position.position_description +'</td>'+
-                    '<td>'+'<button class="btn_table" onclick ="edit_pos('+position.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>' +'</td>'+
+                    '<td>'+'<button class="btn_table" onclick ="edit_pos('+position.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>' 
+                          +'<button class="btn_table" onclick ="delete_pos('+position.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>'
+                    +'</td>'+
                     '</tr>'
-                )
-              })
+                )         
+              })   
             }else{
               $(".pos_norec").text("No Records Found!");
-            }        
+            }      
         }
-      })
+      })   
 }
-
 getposition();
+
+function delete_pos(id){
+    $('#overlay_delete-position').css('display', 'flex')
+    var pos_id = $('#pos_id').val(id)
+    var data_posid  = [];
+        $.ajax({
+        url: 'php/EmployeeModel.php',
+        type: 'GET',
+        data: 'json',
+        success: function(data){
+                var res_data = JSON.parse(data)
+          
+
+            res_data.forEach(data =>{
+                data_posid.push(data.position_id)
+              localStorage.setItem('data-pos',data_posid)
+              // if(pos_id.val() == data.position_id ){
+              //     // $('#yes').attr('disabled','disabled')
+              //     // $('#yes').css('opacity','0.6')
+              //     console.log('hey')
+              //   }else{
+              //     // $('#yes').removeAttr('disabled')
+              //     // $('#yes').css('opacity','1')
+              //     console.log('hello')
+                // }
+                // console.log(data.position_id )
+                // console.log(data_posid)
+
+            })    
+            
+            var get_data =  localStorage.getItem('data-pos');
+              var arr_data = get_data.split(",")
+              
+              // console.log(arr_data)
+
+              // console.log(pos_id.val())
+            //   // console.log(arr_data)
+            for(var i = 0; i < arr_data.length; i++){
+                if(arr_data[i] == pos_id.val()){
+                    console.log('hey');
+                }else{
+                  console.log('hello');
+                }     
+                // console.log(arr_data[i])
+            }
+            //  if(pos_id.val() == arr_data){
+            //         console.log('hey');
+            //     }else{
+            //       console.log('hello');
+            //     }
+            // console.log(pos_id.val())
+
+            // if(pos_id.val() == get_data){
+            //   console.log('hey')
+            // }else{
+            //   console.log('hello')
+            // }                      
+            // console.log(get_data) 
+        }  
+      })
+      
+
+}
 
 function edit_pos(id){
   
@@ -149,34 +221,8 @@ function emp_act(action){
         })    
       }
     })
-    // console.log(data)
 }
 
-// emp_act(action);
-
-  // $('#addemp_company').on('change',function(){
-  //     var comp = $(this).val()
-  //     $('#display_empdept').empty().append('<option disabled selected>Department</option>')
-  //     $('#display_emppos').empty().append('<option disabled selected>Position</option>')
-
-  //     $.ajax({
-  //       url:"php/EmployeeModel.php",
-  //       type: "POST",
-  //       data: "comp="+comp,
-  //       success:function(response){
-  //         var comp_res = JSON.parse(response)
-        
-  //         comp_res.forEach(company =>{
-  //           $('#display_empdept').append(
-  //             $('<option>',{
-  //               value: company.id,
-  //               text: company.department_name
-  //           }));
-  //         })
-          
-  //       }
-  //     })
-  // })
 
 
 function dept_act(act){
@@ -201,35 +247,9 @@ function dept_act(act){
                       text: dept.position_name
                   }));
                 })
-                // console.log(response)
             }
           })
 }
-
-
-
-// $('#display_empdept').on('change',function(){
-//     var dept = $(this).val()
-//     $('#display_emppos').empty().append('<option disabled selected>Position</option>')
-//     $.ajax({
-//       url:"php/EmployeeModel.php",
-//       type: "POST",
-//       data: "dept="+dept,
-//         success:function(response){
-//           var dept_res = JSON.parse(response)
-
-//           dept_res.forEach(dept =>{
-//             $('#display_emppos').append(
-//               $('<option>',{
-//                 value: dept.id,
-//                 text: dept.position_name
-//             }));
-//           })
-//       }
-//     })
-  
-// })
-
 
 $('#Birthday').on('change', function(){
   var birthday = new Date($('#Birthday').val())
@@ -277,3 +297,9 @@ $('#update_birthday').on('change', function(){
 
 })
 
+function delete_emp(id){
+    // console.log('hey')
+    $('#overlay_delete-employee').css('display', 'flex');
+    $('#emp_id').val(id)
+
+}

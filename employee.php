@@ -1,7 +1,6 @@
 <?php
 include 'includes/header.php';
 include 'php/EmployeeModel.php';
-// include 'php/DepartmentModel.php';
 
 session_start();
 if (!isset($_SESSION['ID'])) {
@@ -46,23 +45,31 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-    <!-- ADD EMPLOYEE MODAL -->
 
+    <!-- ADD EMPLOYEE MODAL -->
     <div class="overlay" id="overlay_add-employee">
         <div class="modal_add">
             <form action="php/EmployeeModel.php" method="post">
                 <div class="modal-header">
+                    <button type="button" class="btn-close" id="btn-close_emp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                     <h1>Add Employee</h1>
                 </div>
                 <div class="employee_container">
                     <div class="employee_info">
                         <div class="modal_input">
-                            <input type="text" name="fname" placeholder="First Name" required>
+                            <input type="text" class="input" name="fname" required>
+                            <label for="" class="label">First Name</label>
                         </div>
                         <div class="modal_input">
-                            <input type="text" name="lname" placeholder="Last Name" required>
+                            <input type="text" class="input" name="lname" required>
+                            <label for="" class="label">Last Name</label>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="gender" id="dispalay_company" required>
                                 <option disabled selected value="">Select Gender</option>
                                 <option value="Male">Male</option>
@@ -70,21 +77,23 @@ if (!isset($_SESSION['ID'])) {
                             </select>
                         </div>
                         <div class="modal_input">
-                            <input type="text" name="address" placeholder="Address" required>
+                            <input type="text" class="input" name="address" required>
+                            <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="contact" placeholder="Contact" required>
+                            <input type="number" class="input" name="contact" required>
+                            <label for="" class="label">Contact</label>
                         </div>
-                        <div class="modal_input">
+                        <div class="select">
                             <input type="date" name="birthday" placeholder="Birtday" id="Birthday" required>
-
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="age" placeholder="Age" id="age" required readonly>
+                            <input type="text" class="input" name="age" placeholder="Age" id="age" required readonly>
+                            <label for="" class="label">Age</label>
                         </div>
                     </div>
                     <div class="eployee_compinfo">
-                        <div class="select_department">
+                        <div class="select">
                             <select name="display_comp" id="addemp_company" onchange="emp_act('add_action')" required>
                                 <option disabled selected value="">Company</option>
                                 <?php
@@ -92,17 +101,17 @@ if (!isset($_SESSION['ID'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="display_dept" class="display_empdept adisplay_empdept" onchange="dept_act('add_dept')" required>
                                 <option selected disabled value="">Department</option>
                             </select>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="display_position" class="display_emppos" required>
                                 <option disabled selected value="">Position</option>
                             </select>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="status" id="status" required>
                                 <option disabled selected value="">Status</option>
                                 <option value="Active">Active</option>
@@ -112,32 +121,37 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                 </div>
                 <div class="modal-btn">
-                    <button type="button" id="btn-close_emp">Close</button>
-                    <button type="submit" name="AddEmployee">ADD</button>
+                    <button class="add-btn" type="submit" name="AddEmployee">ADD</button>
                 </div>
             </form>
         </div>
     </div>
-
-
 
     <!-- Update modal Employee -->
     <div class="overlay" id="overlay_update-employee">
         <div class="modal_add">
             <form action="php/EmployeeModel.php" method="post">
                 <div class="modal-header">
+                    <button class="btn-close" type="button" id="btn-close_uemp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                     <h1>Update Employee</h1>
                 </div>
                 <div class="employee_container">
                     <div class="employee_info">
-                    <input type="hidden" name="update_id" placeholder="First Name" id="update_id" required>
+                        <input type="hidden" name="update_id" id="update_id" required>
                         <div class="modal_input">
-                            <input type="text" name="update_fname" placeholder="First Name" id="update_fname" required>
+                            <input type="text" name="update_fname" class="input" id="update_fname" required>
+                            <label for="" class="label">Firt Name</label>
                         </div>
                         <div class="modal_input">
-                            <input type="text" name="update_lname" placeholder="Last Name" id="update_lname" required>
+                            <input type="text" name="update_lname" class="input" id="update_lname" required>
+                            <label for="" class="label">Last Name</label>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="update_gender" id="update_gender" required>
                                 <option disabled selected value="">Select Gender</option>
                                 <option value="Male">Male</option>
@@ -145,22 +159,28 @@ if (!isset($_SESSION['ID'])) {
                             </select>
                         </div>
                         <div class="modal_input">
-                            <input type="text" name="update_address" placeholder="Address" id="update_address" required>
+                            <input type="text" name="update_address" class="input" id="update_address" required>
+                            <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="update_contact" placeholder="Contact" id="update_contact" required>
+                            <input type="number" name="update_contact" class="input" id="update_contact" required>
+                            <label for="" class="label">Contact</label>
+                        </div>
+                        <div class="select">
+                            <input type="date" name="update_birthday" id="update_birthday" required>
                         </div>
                         <div class="modal_input">
-                            <input type="date" name="update_birthday" placeholder="Birtday" id="update_birthday"  required>
-
-                        </div>
-                        <div class="modal_input">
-                            <input type="number" name="update_age" placeholder="Age" id="update_age" required readonly>
+                            <input type="number" name="update_age" class="input" id="update_age" required readonly>
+                            <label for="" class="label">Age</label>
                         </div>
                     </div>
                     <div class="eployee_compinfo">
-                        <div class="select_department">
-                        <p id="comp_name" ></p>
+                        <div class="select">
+                            <div class="current">
+                                <span> Current Company:</span>
+                                <p id="comp_name"></p>
+                            </div>
+
                             <select name="udisplay_comp" id="uemp_company" onchange="emp_act('update_action')" required>
                                 <option disabled selected value="">Company</option>
                                 <?php
@@ -169,21 +189,27 @@ if (!isset($_SESSION['ID'])) {
 
                             </select>
                         </div>
-                        <div class="select_department">
-                            <p id="dept_name" ></p>
+                        <div class="select">
+                            <div class="current">
+                                <span> Current Dept:</span>
+                                <p id="dept_name"></p>
+                            </div>
                             <select name="udisplay_dept" class="display_empdept udisplay_empdept" id="udisplay_empdept" onchange="dept_act('update_dept')" required>
-                                <option selected disabled value="">Department</option> 
+                                <option selected disabled value="">Department</option>
                                 <!-- <option value="SoftWare developer">Department</option> -->
                             </select>
                         </div>
-                        <div class="select_department">
-                        <p id="pos_name" ></p>
+                        <div class="select">
+                            <div class="current">
+                                <span> Current Position:</span>
+                                <p id="pos_name"></p>
+                            </div>
                             <select name="update_position" class="display_emppos" required>
                                 <option disabled selected value="">Position</option>
 
                             </select>
                         </div>
-                        <div class="select_department">
+                        <div class="select">
                             <select name="update_status" id="update_status" required>
                                 <option disabled selected value="">Status</option>
                                 <option value="Active">Active</option>
@@ -193,12 +219,32 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                 </div>
                 <div class="modal-btn">
-                    <button type="button" id="btn-close_uemp">Close</button>
-                    <button name="UpdateEmployee">Update</button>
+                    <button class="add-btn" name="UpdateEmployee">Update</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <!-- Delete Employee -->
+    <div class="overlay" id="overlay_delete-employee">
+        <div class="modal_add">
+            <form action="php/EmployeeModel.php" method="post">
+                    <button type="button" class="btn-close btn-close-demp" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>    
+                <input type="hidden" name="emp_id" id="emp_id">
+                    <div class="delete">
+                        <p> Are you sure Do you wan't to delete</p>
+                        <p>This Employee?</p>
+                    </div>
+                <div class="modal-btn-delete">
+                    <button class="add-btn-no btn-close-demp" type="button" >No</button>
+                    <button class="add-btn-yes" name="DeleteEmployee">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 
 <script src="Js/actions.js"></script>

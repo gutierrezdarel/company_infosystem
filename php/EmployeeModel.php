@@ -19,6 +19,9 @@ if(isset($_POST['act'])){
         emp_selectpos();
     }
 }
+if(isset($_GET['json'])){
+    data_select();
+}
 
 // ADD EMPLOYEE
 if(isset($_POST['AddEmployee'])){
@@ -28,6 +31,11 @@ if(isset($_POST['AddEmployee'])){
 // UPDATE EMPLOYEE
 if(isset($_POST['UpdateEmployee'])){
     Update_employee();
+}
+
+// DELETE EMPLOYEE 
+if(isset($_POST['DeleteEmployee'])){
+    delete_employee();
 }
 
 function e($data){
@@ -87,8 +95,6 @@ function insert_employee(){
     $contact = e($_POST['contact']);
     $birthday = e($_POST['birthday']);
     $age = e($_POST['age']);
-    // $display_comp = e($_POST['display_comp']);
-    // $display_dept = e($_POST['display_dept']);
     $display_position = e($_POST['display_position']);
     $status = e($_POST['status']);
 
@@ -113,8 +119,6 @@ function Update_employee(){
     $update_contact  = e($_POST['update_contact']);
     $update_birthday  = e($_POST['update_birthday']);
     $update_age  = e($_POST['update_age']);
-    // $udisplay_comp  = e($_POST['udisplay_comp']);
-    // $udisplay_dept  = e($_POST['udisplay_dept']);
     $update_position  = e($_POST['update_position']);
     $update_status  = e($_POST['update_status']);
 
@@ -150,14 +154,16 @@ function  table_employee(){
                                 e.gender,
                                 e.birthday,
                                 e.age,
-                                e.stats
+                                e.stats,
+                                e.deleted_at
                                 FROM company as c
                                 RIGHT JOIN department  as d
                                 ON c.id  = company_id
                                 RIGHT JOIN positions as p
                                 ON d.id = department_id 
                                 RIGHT JOIN employee as e
-                                ON p.id = position_id";
+                                ON p.id = position_id
+                                WHERE e.deleted_at IS NULL";
             $query_select = mysqli_query($db,$sql_select);
             
             if($query_select){
@@ -175,7 +181,7 @@ function  table_employee(){
                     echo '<td id="emp_posname-'.$row['id'].'">'.$row['position_name'].'</td>';
                     echo '<td id="emp_stats-'.$row['id'].'">'.$row['stats'].'</td>';
                     echo '<td><button class="btn_table" onclick = "edit_emp('.$row['id'].')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>
-                    <button class="btn_table" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
+                    <button class="btn_table" onclick = "delete_emp('.$row['id'].')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
                     echo '</tr>';
                 }
             }else{
@@ -196,3 +202,34 @@ function select_company() {
             }
         }
 }
+
+function delete_employee(){
+    global $db;
+    
+    $emp_id = e($_POST['emp_id']);
+
+    $sql_delete = "UPDATE employee SET deleted_at = now() WHERE id = '$emp_id'";
+    $query_delete = mysqli_query($db,$sql_delete);
+    
+        if($query_delete){
+            header("location:../employee.php");
+        }else{
+            echo 'Not Deleted';
+        }
+}
+
+function data_select(){
+    global $db;
+
+    $data = array();
+
+
+        $sql_selectdata = "SELECT id,position_id, deleted_at FROM employee WHERE deleted_at IS NULL";
+        $query_selectdata = mysqli_query($db ,$sql_selectdata);
+        if($query_selectdata){
+            foreach($query_selectdata as $row2){
+                array_push($data, $row2);
+            } 
+            echo json_encode($data);
+        }  
+    }

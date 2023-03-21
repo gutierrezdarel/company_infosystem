@@ -22,7 +22,7 @@ if (!isset($_SESSION['ID'])) {
         <div class="filter">
             <select name="" id="append_position" onchange="getposition()">
                 <!-- <option selected disabled>Filter Department</option> -->
-                <?php 
+                <?php
                 select_department();
                 ?>
             </select>
@@ -37,19 +37,19 @@ if (!isset($_SESSION['ID'])) {
                     </tr>
                 </thead>
                 <tbody class="position">
-         
+
                 </tbody>
             </table>
         </div>
-    </div>  
+    </div>
     <p class="pos_norec"></p>
 
-        <!-- ADD MODAL Position -->
+    <!-- ADD MODAL Position -->
     <div class="overlay" id="overlay_add-position">
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
                 <div class="modal-header">
-                <button class="btn-close" type="button" id="btn-close_pos">
+                    <button class="btn-close" type="button" id="btn-close_pos">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['ID'])) {
                     <select name="department_id" required>
                         <option selected disabled value="">Select Department</option>
                         <?php
-                       select_department();
+                        select_department();
                         ?>
                     </select>
                 </div>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Position Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea type="text" class="input" name="Positiondescription" required></textarea>
+                    <textarea type="text" rows="2" cols="21" class="input" name="Positiondescription" required></textarea>
                     <label for="" class="label">Position Description</label>
                 </div>
                 <div class="modal-btn">
@@ -81,12 +81,12 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-       <!-- Update modal Position -->
-       <div class="overlay" id="overlay_update-position">
+    <!-- Update modal Position -->
+    <div class="overlay" id="overlay_update-position">
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
                 <div class="modal-header">
-                <button class="btn-close" type="button" id="btn-close_upos">
+                    <button class="btn-close" type="button" id="btn-close_upos">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -99,7 +99,7 @@ if (!isset($_SESSION['ID'])) {
                     <select name="dept_id" id="dept_id" required>
                         <option selected disabled value="">Select Department</option>
                         <?php
-                       select_department();
+                        select_department();
                         ?>
                     </select>
                 </div>
@@ -108,7 +108,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Position Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea type="text" name="update_posdes" class="input" id="update_posdes" required></textarea>
+                    <textarea type="text" rows="2" cols="21" name="update_posdes" class="input" id="update_posdes" required></textarea>
                     <label for="" class="label">Position Description</label>
                 </div>
                 <div class="modal-btn">
@@ -118,6 +118,28 @@ if (!isset($_SESSION['ID'])) {
             </form>
         </div>
     </div>
+
+    <!-- DELETE POSITION -->
+    <div class="overlay" id="overlay_delete-position">
+        <div class="modal_add">
+            <form action="php/PositionModel.php" method="post">
+                    <button type="button" class="btn-close btn-close-dpos" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>    
+                <input type="hidden" name="pos_id" id="pos_id">
+                    <div class="delete">
+                        <p> Are you sure Do you wan't to delete</p>
+                        <p>This Position?</p>
+                    </div>
+                <div class="modal-btn-delete">
+                    <button class="add-btn-no btn-close-dpos" type="button" >No</button>
+                    <button class="add-btn-yes" id="yes" name="DeletePosition">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </div>
 
 <script src="Js/actions.js"></script>

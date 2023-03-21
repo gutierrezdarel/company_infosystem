@@ -26,6 +26,7 @@ $department = "CREATE TABLE IF NOT EXISTS department(id int(6) NOT NULL auto_inc
       company_id int(6),
       department_name VARCHAR(50),
       department_description VARCHAR(100),
+      deleted_at timestamp NULL,
       PRIMARY KEY (id),
       FOREIGN KEY (company_id) REFERENCES company(id)
       )";
@@ -35,6 +36,7 @@ $position = "CREATE TABLE IF NOT EXISTS positions(id int(6) NOT NULL auto_increm
      department_id int(6),
      position_name VARCHAR(50),  
      position_description VARCHAR(100),
+     deleted_at timestamp NULL,
       PRIMARY KEY (id),
       FOREIGN KEY (department_id) REFERENCES department(id)
       )";
@@ -51,6 +53,7 @@ $employee = "CREATE TABLE IF NOT EXISTS employee(id int(6) NOT NULL auto_increme
      img VARCHAR(50),
      age INT(2),
      stats VARCHAR(50),
+     deleted_at timestamp NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (position_id) REFERENCES positions(id)     
     )";

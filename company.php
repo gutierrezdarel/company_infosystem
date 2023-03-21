@@ -39,7 +39,7 @@ if (!isset($_SESSION['ID'])) {
         <div class="modal_add">
             <form action="php/CompanyModel.php" method="post">
                 <!-- <div class="close-btn"> -->
-                    <button class="btn-close" id="btn-close-comp" >
+                    <button type="button" class="btn-close" id="btn-close-comp" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>    
             <!-- </div> -->
@@ -51,7 +51,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Company Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea rows="2" cols="20" name="Companydescription" class="input" required></textarea>
+                    <textarea rows="2" cols="21" name="Companydescription" class="input" required></textarea>
                     <label for="" class="label">Company Description</label>
                 </div>
                 <div class="modal-btn">
@@ -79,7 +79,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Company Name</label>
                 </div>
                 <div class="modal_input">
-                <textarea type="text" rows="2" cols="20" class="input" id="update_comp-des" name="update_compdes"></textarea>
+                <textarea type="text" rows="2" cols="21" class="input" id="update_comp-des" name="update_compdes"></textarea>
                 <label for="" class="label">Company Description</label>
                 </div>
                 <div class="modal-btn">

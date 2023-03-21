@@ -71,7 +71,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Department Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea rows="2" cols="20"  name="Departmentdescription" class="input" required></textarea>
+                    <textarea rows="2" cols="21"  name="Departmentdescription" class="input" required></textarea>
                     <label for="" class="label">Department Description</label>
                 </div>
                 <div class="modal-btn">
@@ -108,7 +108,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Department Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea rows="2" cols="20" name="update_des" class="input" id="Update_deptdes" required></textarea>
+                    <textarea rows="2" cols="21" name="update_des" class="input" id="Update_deptdes" required></textarea>
                     <label for="" class="label">Department Description</label>
                 </div>
                 <div class="modal-btn">
