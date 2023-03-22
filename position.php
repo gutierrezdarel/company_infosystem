@@ -129,7 +129,7 @@ if (!isset($_SESSION['ID'])) {
                 <input type="hidden" name="pos_id" id="pos_id">
                     <div class="delete">
                         <p> Are you sure Do you wan't to delete</p>
-                        <p>This Position?</p>
+                        <p>this Position?</p>
                     </div>
                 <div class="modal-btn-delete">
                     <button class="add-btn-no btn-close-dpos" type="button" >No</button>

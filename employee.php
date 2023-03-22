@@ -81,7 +81,7 @@ if (!isset($_SESSION['ID'])) {
                             <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" class="input" name="contact" required>
+                            <input type="tel" class="input" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>
                             <label for="" class="label">Contact</label>
                         </div>
                         <div class="select">
@@ -235,7 +235,7 @@ if (!isset($_SESSION['ID'])) {
                 <input type="hidden" name="emp_id" id="emp_id">
                     <div class="delete">
                         <p> Are you sure Do you wan't to delete</p>
-                        <p>This Employee?</p>
+                        <p>this Employee?</p>
                     </div>
                 <div class="modal-btn-delete">
                     <button class="add-btn-no btn-close-demp" type="button" >No</button>

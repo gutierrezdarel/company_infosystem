@@ -88,6 +88,26 @@ if (!isset($_SESSION['ID'])) {
             </form>
         </div>
     </div>
+
+     <!-- DELETE DEPARTMENT -->
+       <div class="overlay" id="overlay_delete-company">
+        <div class="modal_add">
+            <form action="php/CompanyModel.php" method="post">
+                    <button type="button" class="btn-close btn-close-dcomp" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>    
+                <input type="hidden" name="dcomp_id" id="dcomp_id">
+                    <div class="delete">
+                        <p> Are you sure Do you wan't to delete</p>
+                        <p>this Department?</p>
+                    </div>
+                <div class="modal-btn-delete">
+                    <button class="add-btn-no btn-close-dcomp" type="button" >No</button>
+                    <button class="add-btn-yes" id="comp-yes" name="DeleteCompany">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="Js/actions.js"></script>

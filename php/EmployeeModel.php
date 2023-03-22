@@ -52,7 +52,7 @@ function emp_selectdept(){
     $ucomp_id = $_POST['ucomp'];
     $comp= array();
 
-    $sql_select = "SELECT * FROM department WHERE company_id = '$comp_id' || company_id = '$ucomp_id'";
+    $sql_select = "SELECT * FROM department WHERE deleted_at IS NULL AND (company_id = '$comp_id' || company_id = '$ucomp_id') ";
     $query_select = mysqli_query($db ,$sql_select);
 
     if($query_select){
@@ -72,17 +72,18 @@ function emp_selectpos(){
     $udept_id = $_POST['udept'];
     $dept = array();
 
-    $sql_select = "SELECT * FROM positions WHERE department_id = '$dept_id' || department_id = '$udept_id'";
-    $query_select = mysqli_query($db, $sql_select);
-
-        if($query_select){
-            foreach($query_select as $row){
-                array_push($dept, $row);
+        $sql_select = "SELECT * FROM positions WHERE deleted_at IS NULL  AND (department_id = '$dept_id' || department_id = '$udept_id')";
+        $query_select = mysqli_query($db, $sql_select);
+            if($query_select){
+            
+                foreach($query_select as $row){
+                    array_push($dept, $row);
+                }
+                echo json_encode($dept);
+            }else{
+              echo "not selected";
             }
-            echo json_encode($dept);
-        }else{
-          echo "not selected";
-        }
+
 }
 
 function insert_employee(){
@@ -185,14 +186,14 @@ function  table_employee(){
                     echo '</tr>';
                 }
             }else{
-                echo 'hello';
+                echo 'Failed';
             }
 }
 
 function select_company() {
     global $db;
 
-    $sql_select = "SELECT * FROM company order by id ASC";
+    $sql_select = "SELECT * FROM company WHERE deleted_at IS NULL  order by id ASC";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){
@@ -222,7 +223,6 @@ function data_select(){
     global $db;
 
     $data = array();
-
 
         $sql_selectdata = "SELECT id,position_id, deleted_at FROM employee WHERE deleted_at IS NULL";
         $query_selectdata = mysqli_query($db ,$sql_selectdata);

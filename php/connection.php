@@ -18,6 +18,7 @@ $db->query($users);
 $company = "CREATE TABLE IF NOT EXISTS company(id int(6) NOT NULL auto_increment,
       company_name VARCHAR(50),
       company_description VARCHAR(100),
+      deleted_at timestamp NULL,
       PRIMARY KEY (id)
       )";
 $db->query($company);

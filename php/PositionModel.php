@@ -9,10 +9,17 @@
   if(isset($_POST['UpadatePosition'])){
     update_position();
   }
+  if(isset($_POST['DeletePosition'])){
+    delete_position();
+  }
 
 //   APPEND AJAX
   if(isset($_POST['display'])){
         append_position();
+  }
+
+  if(isset($_GET['dept-json'])){
+        data_deptselect();
   }
     
   function e($data){
@@ -40,7 +47,7 @@ function insert_postion(){
 function select_department(){
     global $db;
 
-    $sql_select = "SELECT * FROM department";
+    $sql_select = "SELECT * FROM department WHERE deleted_at IS NULL";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){
@@ -50,31 +57,22 @@ function select_department(){
         }
 }
 
-// Append 
-// function table_position(){
-//     global $db;
+//  DELETE POSITION
 
-//     $sql_select = "SELECT p.position_name,
-//                    p.position_description,
-//                    p.id,
-//                    p.department_id,
-//                    d.id
-//                    FROM positions as p
-//                    LEFT JOIN department as d
-//                    ON p.department_id = d.id WHERE p.department_id = d.id ";
-//     $query_select = mysqli_query($db , $sql_select);
+function delete_position(){
+    global $db;
 
-//         if($query_select){
-//             foreach($query_select as $row){
-//                 echo '<tr>';
-//                 echo '<td>'.$row['position_name'].'</td>';
-//                 echo '<td>'.$row['position_description'].'</td>';
-//                 echo '<td><button class="btn_table"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>
-//                 <button class="btn_table"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
-//                 echo '</tr>';
-//             }
-//         }
-// }
+    $pos_id = $_POST['pos_id'];
+
+     $sql_delete = "UPDATE positions SET deleted_at = NOW() WHERE id = '$pos_id'";
+     $query_delete = mysqli_query($db, $sql_delete);
+        if($query_delete){
+          header("location: ../position.php");
+        }else{
+          echo 'hey';
+        }
+
+}
 function append_position(){
     global $db;
 
@@ -86,10 +84,11 @@ function append_position(){
     p.department_id,
     p.position_name,
     p.position_description,
+    p.deleted_at,
     p.id 
     FROM department as d
     RIGHT JOIN positions as p
-    ON d.id = p.department_id WHERE p.department_id = '$append_position'";
+    ON d.id = p.department_id WHERE p.department_id = '$append_position' AND p.deleted_at IS NULL";
 
     $query_select = mysqli_query($db,$sql_select);
 
@@ -118,3 +117,20 @@ function update_position(){
             header("location:../position.php");
         }
 }
+
+function data_deptselect(){
+  global $db;
+
+  $dept  = array();
+
+
+  $sql_select = "SELECT  id,department_id,deleted_at FROM positions WHERE deleted_at IS NULL ";
+  $query_select = mysqli_query($db, $sql_select);
+    if($query_select){
+        foreach($query_select as $row){
+          array_push($dept, $row);
+        }
+        echo json_encode($dept);
+    }
+}
+ 

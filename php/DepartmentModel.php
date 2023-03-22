@@ -8,11 +8,18 @@ require 'connection.php';
     if(isset($_POST['UpdateDepartment'])){
         update_department();
     }
+    if(isset($_POST['DeleteDepartment'])){
+        delete_department();
+    }
+    if(isset($_GET['comp-json'])){
+        data_compselect();
+    }
 
     // AJAX APPEND
     if(isset($_POST['append'])){
         append_table();
     }
+   
 
     
 function e($data){
@@ -37,11 +44,26 @@ function insert_department(){
         }
 }
 
+function delete_department(){
+    global $db;
+
+    $dept_id = $_POST['dept_id'];
+     
+    $sql_delete = "UPDATE department SET deleted_at = NOW() WHERE id = '$dept_id'";
+    $query_delete = mysqli_query($db , $sql_delete);
+        if($query_delete){
+            header('location:../department.php');
+        }else{
+            echo 'Not deleted';
+        }
+    
+}
+
 // Select Company
 function select_company() {
     global $db;
 
-    $sql_select = "SELECT * FROM company order by id ASC";
+    $sql_select = "SELECT * FROM company WHERE deleted_at IS NULL order by id ASC";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){
@@ -63,10 +85,11 @@ function append_table(){
         d.department_name,
         d.company_id,
         d.department_description,
+        d.deleted_at,
         d.id
         FROM company as c
         RIGHT JOIN department as d
-        ON c.id = d.company_id WHERE d.company_id = '$append_id'";
+        ON c.id = d.company_id WHERE d.company_id = '$append_id' AND d.deleted_at IS NULL";
         $query_select = mysqli_query($db,$sql_select);
 
             if($query_select){
@@ -95,4 +118,20 @@ function update_department(){
             header("location:../department.php");
            }                              
 }
+
+function data_compselect(){
+    global $db;
+
+    $comp = array();
+
+        $sql_select = "SELECT id,company_id,deleted_at FROM department WHERE deleted_at IS NULL";
+        $query_select = mysqli_query($db, $sql_select);
+            if($query_select){
+                foreach($query_select as $row){
+                        array_push($comp ,$row); 
+                }
+                echo json_encode($comp);
+            }
+}   
+
 ?>
