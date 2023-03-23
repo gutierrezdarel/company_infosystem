@@ -24,7 +24,7 @@ if (isset($_SESSION['ID'])) {
       
         <div class="form">
         <div class="txt_field">
-                <input type="text" name="username" id="username"   required>
+                <input type="text" name="username" id="username" autocomplete="off"  required>
                 <span></span>
                 <label>Username</label>
             </div>

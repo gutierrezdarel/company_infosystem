@@ -10,13 +10,14 @@ if (!isset($_SESSION['ID'])) {
 <div class="content_wrapper">
     <div class="content_container">
         <div class="header">
-            <h1>Employee List </h1>
+            <p>Employee List </p>
             <button id="btn_add-employee" class="add-comp"><span>ADD</span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                 </svg>
             </button>
         </div>
+        
         <div class="company_table">
             <table>
                 <thead>
@@ -81,11 +82,11 @@ if (!isset($_SESSION['ID'])) {
                             <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="tel" class="input" name="contact" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>
+                            <input type="number" class="input contact" name="contact" required>
                             <label for="" class="label">Contact</label>
                         </div>
                         <div class="select">
-                            <input type="date" name="birthday" placeholder="Birtday" id="Birthday" required>
+                            <input type="date" name="birthday" placeholder="Birtday" id="Birthday" max="2000-01-01" required>
                         </div>
                         <div class="modal_input">
                             <input type="text" class="input" name="age" placeholder="Age" id="age" required readonly>
@@ -121,7 +122,7 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                 </div>
                 <div class="modal-btn">
-                    <button class="add-btn" type="submit" name="AddEmployee">ADD</button>
+                    <button class="add-btn cont_validation" id="cont_validation" type="submit" name="AddEmployee">ADD</button>
                 </div>
             </form>
         </div>
@@ -163,7 +164,7 @@ if (!isset($_SESSION['ID'])) {
                             <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="update_contact" class="input" id="update_contact" required>
+                            <input type="number" name="update_contact" class="input contact" id="update_contact" required>
                             <label for="" class="label">Contact</label>
                         </div>
                         <div class="select">
@@ -219,7 +220,7 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                 </div>
                 <div class="modal-btn">
-                    <button class="add-btn" name="UpdateEmployee">Update</button>
+                    <button class="add-btn cont_validation" name="UpdateEmployee">Save</button>
                 </div>
             </form>
         </div>

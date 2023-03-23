@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Roboto+Serif:opsz,wght@8..144,100;8..144,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 * {
     margin: 0;
@@ -16,7 +17,7 @@
     position: fixed;
     top: 0;
     width: calc(100% - 300px);
-    background-color: rgba(36, 36, 36, 255);
+    background-color: #29282c;
     height: 70px;
     right: 0;
 }
@@ -24,7 +25,7 @@
 .sidebar_wrapper {
     position: fixed;
     left: 0;
-    background-color: rgba(36, 36, 36, 255);
+    background-color: #29282c;
     height: 100vh;
     width: 300px;
 }
@@ -42,6 +43,7 @@
 
 .sidebar_content li {
     padding: 1rem;
+    list-style-type: none;
 }
 
 .sidebar_content a {
@@ -65,12 +67,16 @@
 
 .content_container {
     padding: 20px 70px;
+    display: flex;
+    flex-direction: column;
 }
 
 .company_table {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 40px;;
+    flex-direction: column;
+    gap: 20px;
     /* background-color: white; */
 }
 
@@ -97,7 +103,23 @@ th {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    /* padding: 0 2rem; */
+    background-color: white;
+    padding: 10px 30px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.096);
+    
+    
+}
+.header p{
+    font-family: 'Arvo', serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.486);
+    margin: 20px 0;
 }
 
 .overlay {
@@ -121,8 +143,7 @@ th {
 }
 
 .modal_add {
-    /* background-color: white; */
-    background-color: rgba(36, 36, 36, 255);
+    background-color: #29282c;
     padding: 1rem 3rem;
     border-radius: 5px;
     color: white;
@@ -136,8 +157,6 @@ th {
 .btn-close {
     background-color: transparent;
     border: none;
-    /* position: relative;
-    left: 228px; */
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -263,7 +282,7 @@ input:read-only~label {
 }
 
 .filter {
-    padding: 10px 0;
+    /* padding: 10px 0; */
     display: flex;
     justify-content: flex-end;
     padding-right: 5rem;
@@ -281,10 +300,10 @@ input:read-only~label {
     padding: 10px;
 }
 
-p {
+/* p {
     text-align: center;
     color: rgb(135, 206, 250);
-}
+} */
 
 .employee_container {
     display: flex;
@@ -404,4 +423,69 @@ input {
 .add-btn-yes:hover::after,
 .add-btn-yes:hover::before {
     width: 100%;
+}
+.dashboard_content{
+    padding: 45px 70px;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.container_card-1{
+    height: 70px;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.096);
+    padding-left: 40px;
+}
+
+.box_icon{
+    background-color: rgba(0,182,122,255);
+    padding: 5px 10px;
+    position: relative;
+    left: 3%;
+    box-shadow: 0 0 10px rgba(0,182,122,255);
+}
+.box_icon img{
+    height: 25px;
+    width: 30px;
+}
+.card_content-wrapper{
+    width: 100%;
+    max-width: 200px;
+}
+.card_content-wrapper p{
+    font-family: 'Arvo', serif;
+    letter-spacing: 1px;
+}
+.dept-icon {
+    background-color: rgba(122,0,255,255);
+    box-shadow: 0 0 10px rgba(122,0,255,255);
+}
+.comp-icon{
+    background-color: rgba(0,187,221,255);
+    box-shadow: 0 0 10px rgba(0,187,221,255);
+}
+
+.emp-icon{
+    background-color: #FF711F;
+    box-shadow: 0 0 10px #FF711F;
+}
+.text-mute{
+    color: grey;
+    padding: 4px 10px;
+    font-size: 11px;
+}
+.total-count{
+    border-bottom: 2px solid rgb(135, 206, 250);
+    padding: 7px 20px;
 }

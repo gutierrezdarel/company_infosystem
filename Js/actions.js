@@ -365,3 +365,16 @@ function delete_comp(id){
           } 
      })
 }
+
+$('.contact').on('keyup', function(){
+ var isvalid =  $('.contact').val()
+    if(isvalid.length === 11){
+      $('.contact').css('border','1px solid green')
+      $('.cont_validation').removeAttr('disabled')
+      $('.cont_validation').css('opacity','1')
+    }else{
+      $('.contact').css('border','1px solid rgb(135, 206, 250)')
+      $('.cont_validation').attr('disabled','disabled')
+      $('.cont_validation').css('opacity','0.7')
+    }
+})
