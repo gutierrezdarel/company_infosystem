@@ -141,57 +141,6 @@ function Update_employee()
         echo 'not updated';
     }
 }
-// function  table_employee()
-// {
-//     global $db;
-
-//     $sql_select = "SELECT c.company_name,
-//                                 d.department_name,
-//                                 d.company_id,
-//                                 p.position_name,
-//                                 p.department_id,
-//                                 e.id,
-//                                 e.fname,
-//                                 e.lname,
-//                                 e.loc,
-//                                 e.contact,
-//                                 e.gender,
-//                                 e.birthday,
-//                                 e.age,
-//                                 e.stats,
-//                                 e.deleted_at
-//                                 FROM company as c
-//                                 RIGHT JOIN department  as d
-//                                 ON c.id  = company_id
-//                                 RIGHT JOIN positions as p
-//                                 ON d.id = department_id 
-//                                 RIGHT JOIN employee as e
-//                                 ON p.id = position_id
-//                                 WHERE e.deleted_at IS NULL";
-//     $query_select = mysqli_query($db, $sql_select);
-
-//     if ($query_select) {
-//         foreach ($query_select as $row) {
-//             echo '<tr>';
-//             echo '<td id="emp_fname-' . $row['id'] . '">' . $row['fname'] . '</td>';
-//             echo '<td id="emp_lname-' . $row['id'] . '">' . $row['lname'] . '</td>';
-//             echo '<td id="emp_gender-' . $row['id'] . '">' . $row['gender'] . '</td>';
-//             echo '<td id="emp_loc-' . $row['id'] . '">' . $row['loc'] . '</td>';
-//             echo '<td id="emp_contact-' . $row['id'] . '">' . $row['contact'] . '</td>';
-//             echo '<td id="emp_bday-' . $row['id'] . '">' . $row['birthday'] . '</td>';
-//             echo '<td id="emp_age-' . $row['id'] . '">' . $row['age'] . '</td>';
-//             echo '<td id="emp_compname-' . $row['id'] . '" comp-id="' . $row['company_id'] . '">' . $row['company_name'] . '</td>';
-//             echo '<td id="emp_deptname-' . $row['id'] . '" dept-id="' . $row['department_id'] . '">' . $row['department_name'] . '</td>';
-//             echo '<td id="emp_posname-' . $row['id'] . '">' . $row['position_name'] . '</td>';
-//             echo '<td id="emp_stats-' . $row['id'] . '">' . $row['stats'] . '</td>';
-//             echo '<td><button class="btn_table" onclick = "edit_emp(' . $row['id'] . ')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>
-//                       <button class="btn_table" onclick = "delete_emp(' . $row['id'] . ')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button></td>';
-//             echo '</tr>';
-//         }
-//     } else {
-//         echo 'Failed';
-//     }
-// }
 
 function select_company()
 {
