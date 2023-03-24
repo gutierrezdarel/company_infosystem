@@ -43,7 +43,7 @@ if (!isset($_SESSION['ID'])) {
             </table>
         </div>
     </div>
-    <p class="pos_norec"></p>
+    <p class="pos_norec records"></p>
 
     <!-- ADD MODAL Position -->
     <div class="overlay" id="overlay_add-position">
@@ -144,3 +144,10 @@ if (!isset($_SESSION['ID'])) {
 </div>
 
 <script src="Js/actions.js"></script>
+<Script>
+    window.addEventListener("load", function() {
+    $(".sidebar-link").removeClass("active")
+    $(".base-position").addClass("active")
+  })
+
+</Script>

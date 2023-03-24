@@ -366,15 +366,83 @@ function delete_comp(id){
      })
 }
 
-$('.contact').on('keyup', function(){
- var isvalid =  $('.contact').val()
-    if(isvalid.length === 11){
-      $('.contact').css('border','1px solid green')
+$('#contact').on('keyup', function(){
+ var isvalid =  $('#contact').val()
+
+    if(isvalid  == ""){
+      $('.contact').css('border','1px solid #9e9e9e')
       $('.cont_validation').removeAttr('disabled')
       $('.cont_validation').css('opacity','1')
-    }else{
+      
+    }else if(isvalid.length === 11){
       $('.contact').css('border','1px solid rgb(135, 206, 250)')
+      $('.cont_validation').removeAttr('disabled')
+      $('.cont_validation').css('opacity','1')
+      
+    }else{
+      $('.contact').css('border','1px solid red')
       $('.cont_validation').attr('disabled','disabled')
       $('.cont_validation').css('opacity','0.7')
     }
 })
+
+$('#update_contact').on('keyup', function(){
+  var uisvalid =  $('#update_contact').val()
+
+  if(uisvalid  == ""){
+    $('#update_contact').css('border','1px solid #9e9e9e')
+    $('#Uemp').removeAttr('disabled')
+    $('#Uemp').css('opacity','1')
+    
+  }else if(uisvalid.length === 11){
+    $('#update_contact').css('border','1px solid rgb(135, 206, 250)')
+    $('#Uemp').removeAttr('disabled')
+    $('#Uemp').css('opacity','1')
+    
+  }else{
+    $('#update_contact').css('border','1px solid red')
+    $('#Uemp').attr('disabled','disabled')
+    $('#Uemp').css('opacity','0.7')
+  }
+})
+
+
+// $('#filter_name').on('keyup' , function(){
+  
+// })
+
+
+function filter(){
+  $('.filt').empty();
+  var name = $('#filter').val()
+ 
+   $.ajax({
+       url:'php/EmployeeModel.php',
+       type:'GET',
+       data: 'filter_name='+name,
+       success:function(filtered){
+         var res_filtered = JSON.parse(filtered)
+ 
+           res_filtered.forEach(datafiltered =>{
+             $('.filt').append('<tr>'+ 
+             '<td id="emp_fname-'+ datafiltered.id+ '">'+datafiltered.fname +'</td>'+
+             '<td id="emp_lname-'+ datafiltered.id+ '">'+datafiltered.lname +'</td>'+ 
+             '<td id="emp_gender-'+ datafiltered.id+ '">'+datafiltered.gender +'</td>'+ 
+             '<td id="emp_loc-'+ datafiltered.id+ '">'+datafiltered.loc +'</td>'+ 
+             '<td id="emp_contact-'+ datafiltered.id+ '">'+datafiltered.contact +'</td>'+ 
+             '<td id="emp_bday-'+ datafiltered.id+ '">'+datafiltered.birthday +'</td>'+ 
+             '<td id="emp_age-'+ datafiltered.id+ '">'+datafiltered.age +'</td>'+
+             '<td id="emp_compname-'+ datafiltered.id+ '">'+datafiltered.company_name +'</td>'+ 
+             '<td id="emp_deptname-'+ datafiltered.id+ '">'+datafiltered.department_name +'</td>'+
+             '<td id="emp_posname-'+ datafiltered.id+ '">'+datafiltered.position_name +'</td>'+
+             '<td id="emp_stats-'+ datafiltered.id+ '">'+datafiltered.stats +'</td>'+
+             '<td>'+'<button class="btn_table" onclick ="edit_emp('+datafiltered.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>' 
+                   +'<button class="btn_table" onclick ="delete_emp('+datafiltered.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>'
+             +'</td>'+    
+             '</tr>')
+           })
+         
+       } 
+   })
+}
+filter();

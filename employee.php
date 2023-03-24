@@ -19,6 +19,9 @@ if (!isset($_SESSION['ID'])) {
         </div>
         
         <div class="company_table">
+        <div class="filter">
+            <input type="text" placeholder="Search....." onkeyup="filter()" id="filter">
+        </div>
             <table>
                 <thead>
                     <tr>
@@ -37,9 +40,9 @@ if (!isset($_SESSION['ID'])) {
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="filt">
                     <?php
-                    table_employee();
+                    // table_employee();
                     ?>
                 </tbody>
             </table>
@@ -82,7 +85,7 @@ if (!isset($_SESSION['ID'])) {
                             <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" class="input contact" name="contact" required>
+                            <input type="number" class="input contact" id="contact" name="contact" required>
                             <label for="" class="label">Contact</label>
                         </div>
                         <div class="select">
@@ -164,7 +167,7 @@ if (!isset($_SESSION['ID'])) {
                             <label for="" class="label">Address</label>
                         </div>
                         <div class="modal_input">
-                            <input type="number" name="update_contact" class="input contact" id="update_contact" required>
+                            <input type="number" name="update_contact" class="input" id="update_contact" required>
                             <label for="" class="label">Contact</label>
                         </div>
                         <div class="select">
@@ -178,7 +181,7 @@ if (!isset($_SESSION['ID'])) {
                     <div class="eployee_compinfo">
                         <div class="select">
                             <div class="current">
-                                <span> Current Company:</span>
+                                <span>Company:</span>
                                 <p id="comp_name"></p>
                             </div>
 
@@ -192,7 +195,7 @@ if (!isset($_SESSION['ID'])) {
                         </div>
                         <div class="select">
                             <div class="current">
-                                <span> Current Dept:</span>
+                                <span>Department:</span>
                                 <p id="dept_name"></p>
                             </div>
                             <select name="udisplay_dept" class="display_empdept udisplay_empdept" id="udisplay_empdept" onchange="dept_act('update_dept')" required>
@@ -202,7 +205,7 @@ if (!isset($_SESSION['ID'])) {
                         </div>
                         <div class="select">
                             <div class="current">
-                                <span> Current Position:</span>
+                                <span>Position:</span>
                                 <p id="pos_name"></p>
                             </div>
                             <select name="update_position" class="display_emppos" required>
@@ -220,7 +223,7 @@ if (!isset($_SESSION['ID'])) {
                     </div>
                 </div>
                 <div class="modal-btn">
-                    <button class="add-btn cont_validation" name="UpdateEmployee">Save</button>
+                    <button class="add-btn" id="Uemp" name="UpdateEmployee">Save</button>
                 </div>
             </form>
         </div>
@@ -249,3 +252,10 @@ if (!isset($_SESSION['ID'])) {
 </div>
 
 <script src="Js/actions.js"></script>
+<Script>
+    window.addEventListener("load", function() {
+    $(".sidebar-link").removeClass("active")
+    $(".base-employee").addClass("active")
+  })
+
+</Script>

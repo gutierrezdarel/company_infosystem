@@ -35,7 +35,7 @@ if (!isset($_SESSION['ID'])) {
                     <p class="text-mute">Total Departments</p>
                 </div>
                 <div class="box_icon dept-icon">
-                    <img src="img/corporate.png" alt="">
+                    <img src="img/networking.png" alt="">
                 </div>
             </div>
             <div class="container_card-1">
@@ -61,3 +61,12 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 </div>
+
+<Script>
+    window.addEventListener("load", function() {
+    $(".sidebar-link").removeClass("active")
+    $(".base-dashboard").addClass("active")
+    // alert('hey')
+  })
+
+</Script>

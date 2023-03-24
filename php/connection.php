@@ -49,7 +49,7 @@ $employee = "CREATE TABLE IF NOT EXISTS employee(id int(6) NOT NULL auto_increme
      lname VARCHAR(50),
      loc VARCHAR(50),
      gender VARCHAR(50),
-     contact INT(11),
+     contact VARCHAR(50),
      birthday DATE,
      img VARCHAR(50),
      age INT(2),

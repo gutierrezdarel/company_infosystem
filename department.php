@@ -44,7 +44,7 @@ if (!isset($_SESSION['ID'])) {
             </table>
         </div>
     </div>
-    <p class="dept_norec"></p>
+    <p class="dept_norec records"></p>
 
     <!-- ADD MODAL Department -->
     <div class="overlay" id="overlay_add-department">
@@ -141,3 +141,10 @@ if (!isset($_SESSION['ID'])) {
 </div>
 
 <script src="Js/actions.js"></script>
+<Script>
+    window.addEventListener("load", function() {
+    $(".sidebar-link").removeClass("active")
+    $(".base-department").addClass("active")
+  })
+
+</Script>

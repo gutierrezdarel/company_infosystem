@@ -111,3 +111,11 @@ if (!isset($_SESSION['ID'])) {
 </div>
 
 <script src="Js/actions.js"></script>
+<Script>
+    window.addEventListener("load", function() {
+    $(".sidebar-link").removeClass("active")
+    $(".base-company").addClass("active")
+    // alert('hey')
+  })
+
+</Script>
