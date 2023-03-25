@@ -47,12 +47,18 @@ function insert_postion(){
 function select_department(){
     global $db;
 
-    $sql_select = "SELECT * FROM department WHERE deleted_at IS NULL";
+    $sql_select = " SELECT c.company_name,
+    d.department_name,
+    d.id,
+    d.deleted_at
+    FROM company as c
+    INNER JOIN department as d
+    ON c.id = d.company_id WHERE d.deleted_at IS NULL";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){
             foreach($query_select as $row){
-                   echo '<option value = "'.$row['id'].'">'.$row['department_name'].' </option>'; 
+                   echo '<option value = "'.$row['id'].'"> '.$row['company_name'].' / '.$row['department_name'].' </option>'; 
             }
         }
 }

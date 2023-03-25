@@ -32,6 +32,7 @@ if (!isset($_SESSION['ID'])) {
             <table>
                 <thead>
                     <tr>
+                        <th>Department</th>
                         <th>Position</th>
                         <th>Description</th>
                         <th>Action</th>
@@ -129,8 +130,8 @@ if (!isset($_SESSION['ID'])) {
                 </button>    
                 <input type="hidden" name="pos_id" id="pos_id">
                     <div class="delete">
-                        <p> Are you sure Do you wan't to delete</p>
-                        <p>this Position?</p>
+                        <p class="delete_text"> </p>
+                        <p class="delete_text2 "></p>
                     </div>
                 <div class="modal-btn-delete">
                     <button class="add-btn-no btn-close-dpos" type="button" >No</button>

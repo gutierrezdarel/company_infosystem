@@ -62,8 +62,8 @@ function delete_department(){
 // Select Company
 function select_company() {
     global $db;
-
-    $sql_select = "SELECT * FROM company WHERE deleted_at IS NULL order by id ASC";
+    
+     $sql_select = "SELECT * FROM company WHERE deleted_at IS NULL order by id ASC";
     $query_select = mysqli_query($db, $sql_select);
 
         if($query_select){

@@ -69,8 +69,7 @@ function getselected(){
               res.forEach(department =>{
                 $('.dept').append(
                     '<tr>'+
-                    // '<p type="text" id="ucomp_name-'+department.id+'" data-id ="'+department.company_id+'">'+department.company_name+'</p>'+
-                    '<td class="hide" id="ucomp_name-'+department.id+'" data-id ="'+department.company_id+'">'+department.company_name+'</td>'+
+                    '<td id="ucomp_name-'+department.id+'" data-id ="'+department.company_id+'">'+department.company_name+'</td>'+
                     '<td id="udept_name-'+department.id+'">'+department.department_name+'</td>'+
                     '<td id="udept_des-'+department.id+'">'+department.department_description +'</td>'+
                     '<td>'+'<button class="btn_table" onclick ="edit_dept('+department.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>' 
@@ -154,7 +153,7 @@ function getposition(){
               res.forEach(position =>{
                 $('.position').append(
                     '<tr>'+
-                    '<td class="hide" id="select_dept-id-'+position.id+'" dept-id ="'+position.department_id+'">'+position.department_name+'</td>'+
+                    '<td id="select_dept-id-'+position.id+'" dept-id ="'+position.department_id+'">'+position.department_name+'</td>'+
                     '<td id="upos_name-'+position.id+'">'+position.position_name+'</td>'+
                     '<td id="upos_des-'+position.id+'">'+position.position_description +'</td>'+
                     '<td>'+'<button class="btn_table" onclick ="edit_pos('+position.id +')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#417505" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></button>' 
@@ -173,7 +172,8 @@ getposition();
 
 function delete_pos(id){
     $('#overlay_delete-position').css('display', 'flex')
-
+    $('.delete_text').empty()
+    $('.delete_text2').empty()
     var pos_id = $('#pos_id').val(id)
     var data_posid = [];
         $.ajax({
@@ -187,23 +187,21 @@ function delete_pos(id){
             res_data.forEach(data =>{
                 data_posid.push(data.position_id)
               localStorage.setItem('data-pos',data_posid)
-              // var get_id = data.position_id
-              // var arr_data = get_id.split(",")
-
-          
-
             })    
           
             var get_data =  localStorage.getItem('data-pos');
               var arr_data = get_data.split(",")
             for(var i = 0; i < arr_data.length; i++){
               if(arr_data[i] === pos_id.val()){
-                
+                $('.delete_text').text("This Position Has Employee!!").css('color', 'white')
+                $('.delete_text2').text(" You Should Remove First Employee").css('color', 'white')
                 $('#yes').attr('disabled', 'disabled')
                 $('#yes').css('opacity','0.7')
                 return true;
               }  
           }
+                $('.delete_text').text("Are you sure Do you wan't to delete").css('color', 'white')
+                $('.delete_text2').text("this Position?").css('color', 'white')
                 $('#yes').removeAttr('disabled')
                 $('#yes').css('opacity','1')
                 return false;

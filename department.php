@@ -32,6 +32,7 @@ if (!isset($_SESSION['ID'])) {
             <table>
                 <thead>
                     <tr>
+                        <th>Company</th>
                         <th>Department</th>
                         <th>Description</th>
                         <th>Action</th>
