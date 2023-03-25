@@ -412,6 +412,7 @@ $('#update_contact').on('keyup', function(){
 
 function filter(){
   $('.filt').empty();
+  $('.emp_norec').empty();
   var name = $('#filter').val()
  
    $.ajax({
@@ -421,6 +422,10 @@ function filter(){
        success:function(filtered){
          var res_filtered = JSON.parse(filtered)
  
+          if(res_filtered == ""){
+            $('.emp_norec').text('No records found')
+          }
+
            res_filtered.forEach(datafiltered =>{
              $('.filt').append('<tr>'+ 
              '<td id="emp_fname-'+ datafiltered.id+ '">'+datafiltered.fname +'</td>'+

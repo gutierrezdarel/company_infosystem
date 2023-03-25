@@ -48,7 +48,7 @@ if (!isset($_SESSION['ID'])) {
             </table>
         </div>
     </div>
-
+    <p class="emp_norec records"></p>
 
     <!-- ADD EMPLOYEE MODAL -->
     <div class="overlay" id="overlay_add-employee">
