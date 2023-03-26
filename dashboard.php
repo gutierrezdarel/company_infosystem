@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'php/CountModel.php';
 
-session_start();
+// session_start();
 if (!isset($_SESSION['ID'])) {
     header("location: index.php");
 }
@@ -61,7 +61,7 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 </div>
-
+<script src="Js/actions.js"></script>
 <Script>
     window.addEventListener("load", function() {
     $(".sidebar-link").removeClass("active")

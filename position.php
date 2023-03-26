@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'php/PositionModel.php';
 
-session_start();
+// session_start();
 if (!isset($_SESSION['ID'])) {
     header("location: index.php");
 }

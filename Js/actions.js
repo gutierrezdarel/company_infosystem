@@ -53,6 +53,12 @@ $('.btn-close-dpos').click(function(){
 $('#btn-close_uemp').click(function(){
   $('#overlay_update-employee').fadeOut();
 })
+$('#btn-close-upload').click(function(){
+  $('.upload-overlay').fadeOut()
+})
+$('.upload-btn').click(function(){
+  $('.upload-overlay').css('display', 'flex')
+})
 
 function getselected(){
   $('.dept').empty()

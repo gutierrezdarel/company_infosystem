@@ -1,6 +1,6 @@
 <?php
 
-$db = new mysqli("localhost", "root", "Allen is Great 200%");
+$db = new mysqli("localhost", "root", "");
 if ($db->connect_errno > 0) {
     die('Unable to connect to database [' . $db->connect_error . ']');
 }
@@ -12,6 +12,7 @@ mysqli_select_db($db, "employee_info");
 $users = "CREATE TABLE IF NOT EXISTS users(id int(3) NOT NULL auto_increment,
           Username varchar(50),
           Pass varchar(50),
+          img varchar (50),
           PRIMARY KEY (id))";
 $db->query($users);
 
