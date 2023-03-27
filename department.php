@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'php/DepartmentModel.php';
 
-// session_start();
+session_start();
 if (!isset($_SESSION['ID'])) {
     header("location: index.php");
 }
@@ -19,16 +19,16 @@ if (!isset($_SESSION['ID'])) {
                 </svg>
             </button>
         </div>
-        
+
         <div class="company_table">
-        <div class="filter">
-            <select name="" id="select_table" onchange="getselected()">
-                <!-- <option selected value="all">All</option> -->
-                <?php
-                select_company();
-                ?>
-            </select>
-        </div>
+            <div class="filter">
+                <select name="" id="select_table" onchange="getselected()">
+                    <!-- <option selected value="all">All</option> -->
+                    <?php
+                    select_company();
+                    ?>
+                </select>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['ID'])) {
                     <label for="" class="label">Department Name</label>
                 </div>
                 <div class="modal_input">
-                    <textarea rows="2" cols="21"  name="Departmentdescription" class="input" required></textarea>
+                    <textarea rows="2" cols="21" name="Departmentdescription" class="input" required></textarea>
                     <label for="" class="label">Department Description</label>
                 </div>
                 <div class="modal-btn">
@@ -120,21 +120,46 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-       <!-- DELETE DEPARTMENT -->
-       <div class="overlay" id="overlay_delete-department">
+    <!-- DELETE DEPARTMENT -->
+    <div class="overlay" id="overlay_delete-department">
         <div class="modal_add">
             <form action="php/DepartmentModel.php" method="post">
-                    <button type="button" class="btn-close btn-close-ddept" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>    
+                <button type="button" class="btn-close btn-close-ddept">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
                 <input type="hidden" name="dept_id" id="dept_id">
-                    <div class="delete">
-                        <p> Are you sure Do you wan't to delete</p>
-                        <p>this Department?</p>
-                    </div>
+                <div class="delete">
+                    <p> Are you sure Do you wan't to delete</p>
+                    <p>this Department?</p>
+                </div>
                 <div class="modal-btn-delete">
-                    <button class="add-btn-no btn-close-ddept" type="button" >No</button>
+                    <button class="add-btn-no btn-close-ddept" type="button">No</button>
                     <button class="add-btn-yes" id="dept-yes" name="DeleteDepartment">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- DELETE DEPARTMENT -->
+    <div class="overlay" id="overlay_delete2-department">
+        <div class="modal_add">
+            <form action="php/DepartmentModel.php" method="post">
+                <!-- <input type="hidden" name="dept_id" id="dept_id"> -->
+                <div class="delete">
+                    <div class="icon-delete">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                    <p> Before you remove this department,</p>
+                    <p> you need delete the included position.</p>
+                </div>
+                <div class="modal-btn-delete">
+                    <button class="add-btn-no btn-close-ddept2" type="button">Cloes</button>
                 </div>
             </form>
         </div>
@@ -144,8 +169,7 @@ if (!isset($_SESSION['ID'])) {
 <script src="Js/actions.js"></script>
 <Script>
     window.addEventListener("load", function() {
-    $(".sidebar-link").removeClass("active")
-    $(".base-department").addClass("active")
-  })
-
+        $(".sidebar-link").removeClass("active")
+        $(".base-department").addClass("active")
+    })
 </Script>

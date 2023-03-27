@@ -36,11 +36,19 @@ $('.btn-close-ddept').click(function(){
   $('#overlay_delete-department').fadeOut();
   localStorage.clear()
 })
+$('.btn-close-ddept2').click(function(){
+  $('#overlay_delete2-department').fadeOut();
+  localStorage.clear()
+})
 $('#btn-close-comp').click(function(){
   $('#overlay_add-company').fadeOut();
 })
 $('.btn-close-dcomp').click(function(){
   $('#overlay_delete-company').fadeOut();
+  localStorage.clear()
+})
+$('.btn-close-dcomp2').click(function(){
+  $('#overlay_delete-company2').fadeOut();
   localStorage.clear()
 })
 $('#btn-close_upos').click(function(){
@@ -49,6 +57,9 @@ $('#btn-close_upos').click(function(){
 $('.btn-close-dpos').click(function(){
   $('#overlay_delete-position').fadeOut();
   localStorage.clear()
+})
+$('.btn-close-dpos2').click(function(){
+  $('#overlay_delete2-position').fadeOut();
 })
 $('#btn-close_uemp').click(function(){
   $('#overlay_update-employee').fadeOut();
@@ -94,7 +105,7 @@ function getselected(){
 getselected();
 
 function delete_dept(id){
-    $('#overlay_delete-department').css('display', 'flex');  
+    
     var dept_id = $('#dept_id').val(id)
     var data_deptid  = [];
 
@@ -120,13 +131,11 @@ function delete_dept(id){
             for(var i = 0; i < arr_deptdata.length; i++){
                 if(arr_deptdata[i] === dept_id.val()){
                   
-                  $('#dept-yes').attr('disabled', 'disabled')
-                  $('#dept-yes').css('opacity','0.7')
+                  $('#overlay_delete2-department').css('display', 'flex');
                   return true;
                 }  
             }
-            $('#dept-yes').removeAttr('disabled')
-            $('#dept-yes').css('opacity','1')
+            $('#overlay_delete-department').css('display', 'flex');  
             return false;
         }  
       })
@@ -177,7 +186,7 @@ function getposition(){
 getposition();
 
 function delete_pos(id){
-    $('#overlay_delete-position').css('display', 'flex')
+    
     $('.delete_text').empty()
     $('.delete_text2').empty()
     var pos_id = $('#pos_id').val(id)
@@ -199,18 +208,11 @@ function delete_pos(id){
               var arr_data = get_data.split(",")
             for(var i = 0; i < arr_data.length; i++){
               if(arr_data[i] === pos_id.val()){
-                // $('.delete_text').text("This Position Has Employee!!").css('color', 'white')
-                // $('.delete_text2').text(" You Should Remove First Employee").css('color', 'white')
-                $('#overlay_delete2-position').css('display','flex');
-                $('#yes').attr('disabled', 'disabled')
-                $('#yes').css('opacity','0.7')
+                $('#overlay_delete2-position').css('display','flex')
                 return true;
               }  
           }
-                $('.delete_text').text("Are you sure Do you wan't to delete").css('color', 'white')
-                $('.delete_text2').text("this Position?").css('color', 'white')
-                $('#yes').removeAttr('disabled')
-                $('#yes').css('opacity','1')
+                $('#overlay_delete-position').css('display', 'flex')
                 return false;
            
         }  
@@ -338,7 +340,7 @@ function delete_emp(id){
 }
 
 function delete_comp(id){
-          $('#overlay_delete-company').css('display' ,'flex')
+         
 
       var comp_id = $('#dcomp_id').val(id)
 
@@ -359,13 +361,11 @@ function delete_comp(id){
             
             for(var i = 0; i < arr_compid.length; i++ ){
                   if(arr_compid[i] === comp_id.val()){
-                      $('#comp-yes').attr('disabled', 'disabled')
-                      $('#comp-yes').css('opacity','0.7')
+                      $('#overlay_delete-company2').css('display','flex')
                       return true;
                   }
             }
-            $('#comp-yes').removeAttr('disabled')
-            $('#comp-yes').css('opacity','1')
+            $('#overlay_delete-company').css('display' ,'flex')
             return false;
           } 
      })
