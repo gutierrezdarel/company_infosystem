@@ -144,7 +144,7 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-    
+    <!-- DELETE POSITION -->
     <div class="overlay" id="overlay_delete2-position">
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
@@ -160,7 +160,7 @@ if (!isset($_SESSION['ID'])) {
                     <p>Please remove this employee first.</p>
                 </div>
                 <div class="modal-btn-delete">
-                    <button class="add-btn-no btn-close-dpos2" type="button">Cloes</button>
+                    <button class="add-btn-no btn-close-dpos2" type="button">Close</button>
                 </div>
             </form>
         </div>

@@ -89,7 +89,7 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-     <!-- DELETE DEPARTMENT -->
+     <!-- DELETE Company -->
        <div class="overlay" id="overlay_delete-company">
         <div class="modal_add">
             <form action="php/CompanyModel.php" method="post">
@@ -109,7 +109,7 @@ if (!isset($_SESSION['ID'])) {
         </div>
     </div>
 
-    <!-- DELETE DEPARTMENT -->
+    <!-- DELETE Company -->
     <div class="overlay" id="overlay_delete-company2">
         <div class="modal_add">
             <form action="php/DepartmentModel.php" method="post">
@@ -125,7 +125,7 @@ if (!isset($_SESSION['ID'])) {
                     <p> you need delete the included Department.</p>
                 </div>
                 <div class="modal-btn-delete">
-                    <button class="add-btn-no btn-close-dcomp2" type="button">Cloes</button>
+                    <button class="add-btn-no btn-close-dcomp2" type="button">Close</button>
                 </div>
             </form>
         </div>

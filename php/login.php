@@ -83,7 +83,7 @@ function select_image(){
     $query_select_image = mysqli_query($db , $sql_select_image);
     if($query_select_image){
         foreach($query_select_image as $img){
-            echo '<img src="./img/'.$img['img'].'" alt="">';
+            echo '<img src="./img/'.$img['img'].'" alt="" >';
         }
     }
 }

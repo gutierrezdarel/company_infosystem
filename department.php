@@ -159,7 +159,7 @@ if (!isset($_SESSION['ID'])) {
                     <p> you need delete the included position.</p>
                 </div>
                 <div class="modal-btn-delete">
-                    <button class="add-btn-no btn-close-ddept2" type="button">Cloes</button>
+                    <button class="add-btn-no btn-close-ddept2" type="button">Close</button>
                 </div>
             </form>
         </div>

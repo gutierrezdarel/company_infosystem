@@ -47,7 +47,7 @@ include 'php/login.php';
         </div>
 
     </div>
-    <div class="upload-overlay" id="">
+    <div class="upload-overlay" >
         <div class="modal_add">
             <form action="php/login.php" method="post" enctype="multipart/form-data">
             <button class="btn-close" type="button" id="btn-close-upload" >
@@ -57,7 +57,7 @@ include 'php/login.php';
                     <h1>Upload Company</h1>
                 </div>
                 <input type="hidden" id="user_id" name="user_id">
-                <input type="file"  name="file" >
+                <input type="file"  name="file" required>
             
                 <div class="modal-btn">
                     <button class="add-btn" name="upload">Upload</button>

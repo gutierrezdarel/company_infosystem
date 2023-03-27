@@ -96,7 +96,7 @@ function getselected(){
                 )
               })
             }else{
-              $(".dept_norec").text("No Records Found!");
+              $(".dept_norec").text("No records found");
 
             }   
         }
@@ -178,7 +178,7 @@ function getposition(){
                 )         
               })   
             }else{
-              $(".pos_norec").text("No Records Found!");
+              $(".pos_norec").text("No records found");
             }      
         }
       })   
