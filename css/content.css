@@ -619,3 +619,12 @@ input {
 .upload-overlay input {
     border: none;
 }
+.icon-delete{
+    
+    display: flex;
+    justify-content: center;
+}
+.icon-delete svg{
+    border: 2px solid red;
+    border-radius: 50%;
+}

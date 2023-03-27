@@ -60,7 +60,7 @@ function upload_image(){
         $errormsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
     }
 
-   echo $errormsg;
+    echo $errormsg;
 }
 
 

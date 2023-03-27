@@ -2,7 +2,7 @@
 include 'includes/header.php';
 include 'php/PositionModel.php';
 
-// session_start();
+session_start();
 if (!isset($_SESSION['ID'])) {
     header("location: index.php");
 }
@@ -19,16 +19,16 @@ if (!isset($_SESSION['ID'])) {
                 </svg>
             </button>
         </div>
-        
+
         <div class="company_table">
-        <div class="filter">
-            <select name="" id="append_position" onchange="getposition()">
-                <!-- <option selected disabled>Filter Department</option> -->
-                <?php
-                select_department();
-                ?>
-            </select>
-        </div>
+            <div class="filter">
+                <select name="" id="append_position" onchange="getposition()">
+                    <!-- <option selected disabled>Filter Department</option> -->
+                    <?php
+                    select_department();
+                    ?>
+                </select>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -125,17 +125,42 @@ if (!isset($_SESSION['ID'])) {
     <div class="overlay" id="overlay_delete-position">
         <div class="modal_add">
             <form action="php/PositionModel.php" method="post">
-                    <button type="button" class="btn-close btn-close-dpos" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>    
+                <button type="button" class="btn-close btn-close-dpos">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
                 <input type="hidden" name="pos_id" id="pos_id">
-                    <div class="delete">
-                        <p class="delete_text"> </p>
-                        <p class="delete_text2 "></p>
-                    </div>
+                <div class="delete">
+                    <p> Are you sure Do you wan't to delete</p>
+                    <p>this Position?</p>
+                </div>
                 <div class="modal-btn-delete">
-                    <button class="add-btn-no btn-close-dpos" type="button" >No</button>
+                    <button class="add-btn-no btn-close-dpos" type="button">No</button>
                     <button class="add-btn-yes" id="yes" name="DeletePosition">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="overlay" id="overlay_delete2-position">
+        <div class="modal_add">
+            <form action="php/PositionModel.php" method="post">
+                <div class="delete">
+
+                    <div class="icon-delete">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#d0021b" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                    <p>There is an employee for this position!</p>
+                    <p>Please remove this employee first.</p>
+                </div>
+                <div class="modal-btn-delete">
+                    <button class="add-btn-no btn-close-dpos2" type="button">Cloes</button>
                 </div>
             </form>
         </div>
@@ -147,8 +172,7 @@ if (!isset($_SESSION['ID'])) {
 <script src="Js/actions.js"></script>
 <Script>
     window.addEventListener("load", function() {
-    $(".sidebar-link").removeClass("active")
-    $(".base-position").addClass("active")
-  })
-
+        $(".sidebar-link").removeClass("active")
+        $(".base-position").addClass("active")
+    })
 </Script>

@@ -199,8 +199,9 @@ function delete_pos(id){
               var arr_data = get_data.split(",")
             for(var i = 0; i < arr_data.length; i++){
               if(arr_data[i] === pos_id.val()){
-                $('.delete_text').text("This Position Has Employee!!").css('color', 'white')
-                $('.delete_text2').text(" You Should Remove First Employee").css('color', 'white')
+                // $('.delete_text').text("This Position Has Employee!!").css('color', 'white')
+                // $('.delete_text2').text(" You Should Remove First Employee").css('color', 'white')
+                $('#overlay_delete2-position').css('display','flex');
                 $('#yes').attr('disabled', 'disabled')
                 $('#yes').css('opacity','0.7')
                 return true;
